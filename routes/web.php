@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\QrcodeController;
+use App\Http\Controllers\FollowController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +18,12 @@ use App\Http\Controllers\QrcodeController;
 
 // 🔽 追加
 Route::middleware('auth')->group(function () {
+    Route::get('user/{user}', [FollowController::class, 'index'])->name('follow.show');
     Route::resource('feed', FeedController::class);
+    // 🔽 追加
+    Route::post('user/{user}/follow', [FollowController::class, 'store'])->name('follow');
+    // 🔽 追加
+    Route::post('user/{user}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
 });
 
 Route::resource('qrcode', QrcodeController::class);

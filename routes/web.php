@@ -18,6 +18,8 @@ use App\Http\Controllers\FollowController;
 
 // 🔽 追加
 Route::middleware('auth')->group(function () {
+    Route::get('/feed/timeline', [FeedController::class, 'timeline'])->name('feed.timeline');
+    Route::get('follower/{user}', [FollowController::class, 'show'])->name('user.show');
     Route::get('user/{user}', [FollowController::class, 'index'])->name('follow.show');
     Route::resource('feed', FeedController::class);
     // 🔽 追加

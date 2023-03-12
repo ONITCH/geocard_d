@@ -19,12 +19,15 @@
                             @foreach ($feeds as $feed)
                             <tr class="hover:bg-grey-lighter">
                                 <td class="py-4 px-6 border-b border-grey-light">
-                                    <p class="text-left text-grey-dark">{{$feed->user->name}}</p>
+                                    <a href="{{ route('user.show', $feed->user->id) }}">
+                                        <p class="text-left text-grey-dark">{{$feed->user->name}}</p>
+                                    </a>
                                     <a herf="{{route('feed.show',$feed->id)}}">
                                         <h3 class="text-left font-bold text-lg text-grey-dark">{{$feed->feed}}</h3>
                                     </a>
                                     <div class="flex">
                                         @if($feed->user_id===Auth::user()->id)
+
                                         <!-- 更新ボタン -->
                                         <form action="{{ route('feed.edit',$feed->id) }}" method="GET" class="text-left">
                                             @csrf

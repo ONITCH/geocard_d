@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Feed;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -51,6 +52,21 @@ class FeedController extends Controller
         // $feed->user_id = $request->user()->id;
         // $user_id->user_id = $request->user()->id;
         return redirect()->route('feed.index');
+    }
+
+
+    // フォローしている人のみ表示する APP/Models/User必要？上のやつ
+    public function timeline()
+    {
+        // フォローしているユーザを取得する
+        $followings = User::find(Auth::id())->followings->pluck('id')->all();
+        // 自分とフォローしている人が投稿したツイートを取得する
+        $feeds = Feed::query()
+            ->where('user_id', Auth::id())
+            ->orWhereIn('user_id', $followings)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+        return view('feed.index', compact('feeds'));
     }
 
     /**

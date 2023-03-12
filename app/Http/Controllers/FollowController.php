@@ -50,7 +50,14 @@ class FollowController extends Controller
      */
     public function show($id)
     {
-        //
+        // ターゲットユーザのデータ
+        $user = User::find($id);
+        // ターゲットユーザのフォロワー一覧
+        $followers = $user->followers;
+        // ターゲットユーザのフォローしている人一覧
+        $followings  = $user->followings;
+
+        return view('user.show', compact('user', 'followers', 'followings'));
     }
 
     /**

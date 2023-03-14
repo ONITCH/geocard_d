@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\QrcodeController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\CardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,7 @@ use App\Http\Controllers\FollowController;
 
 // 🔽 追加
 Route::middleware('auth')->group(function () {
+    Route::resource('card', CardController::class);
     Route::get('/feed/timeline', [FeedController::class, 'timeline'])->name('feed.timeline');
     Route::get('follower/{user}', [FollowController::class, 'show'])->name('user.show');
     Route::get('user/{user}', [FollowController::class, 'index'])->name('follow.show');

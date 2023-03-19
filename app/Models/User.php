@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -50,5 +51,14 @@ class User extends Authenticatable
     public function followers()
     {
         return $this->belongsToMany(self::class, "follows", "following_id", "user_id")->withTimestamps();
+    }
+
+    public function canFollow(User $user)
+    {
+        if (!$this->id || $user->id === $this->id) {
+            return false;
+        }
+
+        return !$this->followings()->where('user_id', $user->id)->exists();
     }
 }

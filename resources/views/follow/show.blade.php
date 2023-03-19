@@ -47,6 +47,12 @@
                                             </button>
                                         </form>
                                         @endif
+                                        {{-- @if (auth()->check() && auth()->user()->id !== $user->id) --}}
+    {{-- <form action="{{ route('follow', $users->id) }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary">Follow</button>
+    </form> --}}
+{{-- @endif --}}
                                     </div>
                                     <!-- 🔼 ここまで編集 -->
 

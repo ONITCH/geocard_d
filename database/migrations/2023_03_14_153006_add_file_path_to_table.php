@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('templates', function (Blueprint $table) {
-            $table->id();
-            $table->string('filename');
-            $table->boolean('paid')->nullable();
-            $table->timestamps();
+        Schema::table('templates', function (Blueprint $table) {
+            $table->string('file_path');
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('templates');
+        Schema::table('templates', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Template extends Model
+class UploadImage extends Model
 {
     use HasFactory;
+    protected $table = "templates";
+    protected $fillable = ["filename", "file_path"];
 }

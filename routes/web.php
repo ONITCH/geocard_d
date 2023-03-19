@@ -6,6 +6,7 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\QrcodeController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\TemplateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +20,17 @@ use App\Http\Controllers\CardController;
 
 // 🔽 追加
 Route::middleware('auth')->group(function () {
+    Route::get('card/upload', [App\Http\Controllers\UploadImageController::class, "show"])->name("upload_form");
+
+    Route::post('card/upload', [App\Http\Controllers\UploadImageController::class, "upload"])->name("upload_image");
+
+    Route::get('card/upload', [App\Http\Controllers\TemplateController::class, "show"])->name("template");
+
+    Route::get('card/create', [App\Http\Controllers\CardController::class, "show2"])->name("card.create");
+
     Route::resource('card', CardController::class);
     Route::get('/feed/timeline', [FeedController::class, 'timeline'])->name('feed.timeline');
+    //↓フォロワーの情報
     Route::get('follower/{user}', [FollowController::class, 'show'])->name('user.show');
     Route::get('user/{user}', [FollowController::class, 'index'])->name('follow.show');
     Route::resource('feed', FeedController::class);

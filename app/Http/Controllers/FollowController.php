@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Feed;
 use Illuminate\Support\Facades\Auth;
+// use App\Models\User::followings();
 
 class FollowController extends Controller
 {
@@ -36,10 +37,20 @@ class FollowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user)
+
+
+    public function store(Request $request, User $user)
     {
-        Auth::user()->followings()->attach($user->id);
-        return redirect()->back();
+        if ($request->user()->canFollow($user)) {
+            $request->user()->followings()->attach($user);
+            $user->followers()->attach($request->$user);
+            return redirect()->back();
+        }
+        // Auth::user()->followings()->attach($user->id);
+        // //ここに足す　相手が自分をフォローする　以下追記文 QRコードをここに繋げる
+        // // $friend = User::find($user->id);
+        // // $friend->followers()->attach(Auth::$request->id());
+        // return redirect()->back()->with('success', 'You are now following ' . $user->name);
     }
 
     /**

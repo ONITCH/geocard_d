@@ -17,6 +17,9 @@ class QrcodeController extends Controller
      */
     public function index()
     {
+        $src = base64_encode(QrCode::format('png')->size(100)->generate('https://qiita.com/nobuhiro-kobayashi'));
+
+        // return response('<img src="data:image/png;base64, ' . $src . '">');
         return view('qrcode.qrcode');
     }
 
@@ -41,7 +44,7 @@ class QrcodeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //フォロー確認画面に続くリンク　https://local/invite/username?user/?
     }
 
     /**

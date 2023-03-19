@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Card;
+use App\Models\UploadImage;
 
 class CardController extends Controller
 {
@@ -26,7 +27,12 @@ class CardController extends Controller
      */
     public function create()
     {
-        return view('card.create');
+        //アップロードした画像を取得
+        $uploads = UploadImage::orderBy("id", "desc")->get();
+
+        return view("card/create", [
+            "images" => $uploads
+        ]);
     }
 
     /**
@@ -46,10 +52,25 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        // return view('card.create');
-    }
+    // function show2()
+    // {
+    //     //アップロードした画像を取得
+    //     $uploads = UploadImage::orderBy("id", "desc")->get();
+
+    //     return view("card/create", [
+    //         "images" => $uploads
+    //     ]);
+    // }
+
+    // function show2()
+    // {
+    //     //アップロードした画像を取得
+    //     $uploads = UploadImage::orderBy("id", "desc")->get();
+
+    //     return view("card/create", [
+    //         "images" => $uploads
+    //     ]);
+    // }
 
     /**
      * Show the form for editing the specified resource.

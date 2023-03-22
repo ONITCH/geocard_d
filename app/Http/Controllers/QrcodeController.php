@@ -17,10 +17,15 @@ class QrcodeController extends Controller
      */
     public function index()
     {
-        $src = base64_encode(QrCode::format('png')->size(100)->generate('https://qiita.com/nobuhiro-kobayashi'));
+        $user_id = auth()->id();
+        $url = route('follow.show', ['user' => $user_id]);
+        $src = base64_encode(QrCode::format('png')->size(100)->generate($url));
+        return view('qrcode.qrcode', compact('src'));
 
-        // return response('<img src="data:image/png;base64, ' . $src . '">');
-        return view('qrcode.qrcode');
+        // $src = base64_encode(QrCode::format('png')->size(100)->generate('https://qiita.com/nobuhiro-kobayashi'));
+
+        // // return response('<img src="data:image/png;base64, ' . $src . '">');
+        // return view('qrcode.qrcode');
     }
 
     /**

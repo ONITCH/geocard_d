@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Card;
 use App\Models\UploadImage;
+use App\Models\Template;
+use Str;
 
 class CardController extends Controller
 {
@@ -43,7 +45,31 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        // return view('card.index');
+        // dd($request->template_id);
+
+        $request->validate([
+            'image' => 'required|file|image|mimes:png,jpeg'
+        ]);
+
+        $upload_image = $request->file('image');
+        $template_id = $request->input('template_id');
+        $template = Template::find($template_id);
+
+        if ($upload_image && $template) {
+            //アップロードされた画像を保存する
+            $path = $upload_image->store('uploads', "public");
+            //画像の保存に成功したらDBに記録する
+            if ($path) {
+
+                Card::create([
+                    "card_avatar" => $upload_image->getClientOriginalName(),
+                    "file_path" => $path,
+                    "comments" => $request->comments,
+                    "template_id" => $request->template_id,
+                ]);
+            }
+        }
+        return redirect("/card/create");
     }
 
     /**
@@ -52,16 +78,6 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // function show2()
-    // {
-    //     //アップロードした画像を取得
-    //     $uploads = UploadImage::orderBy("id", "desc")->get();
-
-    //     return view("card/create", [
-    //         "images" => $uploads
-    //     ]);
-    // }
-
     // function show2()
     // {
     //     //アップロードした画像を取得

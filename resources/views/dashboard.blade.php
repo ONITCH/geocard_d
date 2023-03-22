@@ -11,6 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div>{{ __("WELCOME! ") }}{{ Auth::user()->name }}</div>
                     <img src="{{ asset('image/geocardsample2.png') }}" alt="">
+                    {{-- {{ $templates->filename }} --}}
                 </div>
             </div>
         </div>

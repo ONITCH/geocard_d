@@ -12,7 +12,9 @@
                     <table class="text-center w-full border-collapse">
                         <thead>
                             <tr>
-                                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-lg text-grey-dark border-b border-grey-light">CARD TEMPLATES</th>
+                                <th
+                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-lg text-grey-dark border-b border-grey-light">
+                                    CARD TEMPLATES</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -20,30 +22,31 @@
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <h3 class="text-left font-bold text-lg text-grey-dark">UPLOAD PAGE</h3>
                                     @if (count($errors) > 0)
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     @endif
-                                    <form method="post" action="{{ route('upload_image') }}" enctype="multipart/form-data">
+                                    <form method="post" action="{{ route('upload_image') }}"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <input type="file" name="image" accept="image/png, image/jpeg">
                                         <input type="submit" value="Upload">
                                     </form>
 
-{{-- <a href="{{ route('card/upload') }}">Upload</a>
+                                    {{-- <a href="{{ route('card/upload') }}">Upload</a>
 <hr /> --}}
 
-                                    @foreach($images as $image)
-                                    <div style="width: 15rem; float:left; margin: 16px;">
-                                        <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"/>
-                                        <p>{{ $image->filename }}</p>
-                                    </div>
+                                    @foreach ($images as $image)
+                                        <div style="width: 15rem; float:left; margin: 16px;">
+                                            <img src="{{ Storage::url($image->file_path) }}" style="width:100%;" />
+                                            <p>{{ $image->filename }}</p>
+                                        </div>
                                     @endforeach
-                                    
+
                                 </td>
                             </tr>
                         </tbody>
@@ -53,5 +56,3 @@
         </div>
     </div>
 </x-app-layout>
-
-

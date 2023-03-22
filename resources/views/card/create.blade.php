@@ -11,47 +11,68 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h3 class="text-left font-bold text-lg text-grey-dark"> MY CARD CREATE</h3>
                     @include('common.errors')
-                    {{-- <form class="mb-6" action="{{ route('template.store') }}" method="POST"> --}}
+                    <form class="mb-6" action="{{ route('card.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="flex flex-col mb-4">
-                            @foreach($images as $image)
-                            <div class="flex flex-col gap-y-3">
-  <div class="flex">
-    <input type="radio" name="hs-radio-vertical-group" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-radio-vertical-group-1" checked>
-    <label for="hs-radio-vertical-group-1" class="text-sm text-gray-500 ml-2 dark:text-gray-400">
-  </div>
-                            {{-- <label> --}}
-                            <div style="width: 8rem; float:left; margin: 16px;">
-                            <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"/>
-                            <p>{{ $image->filename }}</p>
-                            </div>
-                            </label>
-                            {{-- </label> --}}
+                            @foreach ($images as $image)
+                                <div class="flex flex-col gap-y-3">
+
+                                    <div class="flex">
+                                        <input type="radio" name="template_id"
+                                            class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                                            id="template_{{ $image->id }}" value="{{ $image->id }}">
+                                        <label for="template_{{ $image->id }}"
+                                            class="text-sm text-gray-500 ml-2 dark:text-gray-400">{{ $image->filename }}</label>
+                                    </div>
+
+                                    <div style="width: 8rem; float:left; margin: 16px;">
+                                        <img src="{{ Storage::url($image->file_path) }}" style="width:100%;" />
+                                        {{-- <p>{{ $image->filename }}</p> --}}
+                                        <p>{{ $image->id }}</p>
+                                    </div>
+                                </div>
                             @endforeach
-                        </div>    
-{{-- @foreach ($options as $option)
-    <label>
-        {{ Form::radio('option', $option['value']) }}
-        {{ $option['label'] }}
-    </label>
-@endforeach --}}
-                            {{-- <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="tweet">Tweet</label> --}}
-                            {{-- <input class="border py-2 px-3 text-grey-darkest" type="text" name="tweet" id="tweet"> --}}
-                        
+                        </div>
+                        {{-- コメント --}}
+                        <div class="p-6 bg-white border-b border-gray-200">
+                            {{-- @include('common.errors')
+                        <form class="mb-6" action="{{ route('card.store') }}" method="POST"
+                            enctype="multipart/form-data"> --}}
+                            @csrf
+                            <div class="flex flex-col mb-4">
+                                <label class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                                    for="comments">COMMENT</label>
+                                <input class="border py-2 px-3 text-grey-darkest" type="text" name="comments"
+                                    id="comments">
+                            </div>
+
+                            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="card_avatar">UPLOAD
+                                IMAGE</label>
+                            <input type="file" name="image" accept="image/png, image/jpeg">
+                        </div>
+
                         <div class="flex flex-col mb-4">
                             {{-- <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="description">Description</label> --}}
                             {{-- <input class="border py-2 px-3 text-grey-darkest" type="text" name="description" id="description"> --}}
                         </div>
-                        <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+                        <button type="submit"
+                            class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
                             Create
                         </button>
                     </form>
+                    {{-- <form method="POST" action="/example">
+                        @csrf
+                        <label><input type="radio" name="gender" value="male">男性</label>
+                        <label><input type="radio" name="gender" value="female">女性</label>
+                        <button type="submit">送信</button> --}}
+
+                    {{-- </form> --}}
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="bg-white pt-12 sm:pt-16 lg:pt-24">
+    {{-- <div class="bg-white pt-12 sm:pt-16 lg:pt-24">
   <!-- nav - start -->
   <nav class="sticky bottom-0 mx-auto flex w-full justify-between gap-8 border-t bg-white px-10 py-4 text-xs sm:max-w-md sm:rounded-t-xl sm:border-transparent sm:text-sm sm:shadow-2xl">
     <span class="flex flex-col items-center gap-1 text-indigo-500">
@@ -89,5 +110,5 @@
     </a>
   </nav>
   <!-- nav - end -->
-</div>
+</div> --}}
 </x-app-layout>

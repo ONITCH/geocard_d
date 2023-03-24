@@ -18,7 +18,7 @@
             <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        <table class="text-center w-full border-collapse">
+                        <table class="text-center w-full border-collapse" style="margin-bottom: 200px;">
                             <thead>
                                 <tr>
                                     <th
@@ -84,10 +84,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{-- <div class="mb-8"></div> --}}
                     </div>
                 </div>
             </div>
         </div>
+
 
         <div class="form-bottom py-12">
             <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">

@@ -17,7 +17,9 @@
                         <p>QRコード読み取り</p>
                     </div>
                 </div>
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <div class="text-center font-bold">{{ Auth::user()->name }}</div>
+                </div>
             </div>
         </div>
-    </div>
 </x-app-layout>

@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UploadImage;
 
-class UploadImageController extends Controller
+class UploadController extends Controller
 {
     function show()
     {
-        return view("card/upload");
+        $uploads = UploadImage::orderBy("id", "desc")->get();
+
+        return view("card/upload", [
+            "images" => $uploads
+        ]);
     }
 
     function upload(Request $request)
@@ -26,10 +30,15 @@ class UploadImageController extends Controller
             if ($path) {
                 UploadImage::create([
                     "filename" => $upload_image->getClientOriginalName(),
-                    "file_path" => $path
+                    "file_path" => $path,
+                    // 'template_id'=>
+                    "paid" => $request->paid
                 ]);
             }
         }
+
+        $uploads = UploadImage::orderBy("id", "desc")->get();
+
         return redirect("/card/upload");
     }
 }

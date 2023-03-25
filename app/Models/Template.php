@@ -7,12 +7,35 @@ use Illuminate\Database\Eloquent\Model;
 
 class Template extends Model
 {
-    // protected $table = 'templates';
+    use HasFactory;
 
-    // protected $fillable = ["card_avatar", "file_path", "comments"];
+    protected $table = 'templates';
 
-    public function template()
+    protected $fillable = [
+        'filename',
+        'file_path',
+    ];
+
+    public function upload_images()
     {
-        return $this->belongsTo(Template::class);
+        return $this->hasMany(UploadImage::class, 'template_id');
     }
 }
+
+
+// namespace App\Models;
+
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Model;
+
+// class Template extends Model
+// {
+//     // protected $table = 'templates';
+
+//     // protected $fillable = ["card_avatar", "file_path", "comments"];
+
+//     public function template()
+//     {
+//         return $this->belongsTo(Template::class);
+//     }
+// }

@@ -34,6 +34,10 @@
             z-index: 999;
 
         }
+
+        header {
+            margin-top: 65px;
+        }
     </style>
 </head>
 

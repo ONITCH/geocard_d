@@ -1,29 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+// namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\UploadImage;
+// use Illuminate\Http\Request;
+// use App\Models\UploadImage;
 
-class TemplateController extends Controller
-{
-    function show()
-    {
-        //アップロードした画像を取得
-        $uploads = UploadImage::orderBy("id", "desc")->get();
+// class TemplateController extends Controller
+// {
+//     function show()
+//     {
 
-        return view("card/upload", [
-            "images" => $uploads
-        ]);
-    }
+//         //アップロードした画像を取得して表示するためのコントローラ！！！多分！
+//         $uploads = UploadImage::orderBy("id", "desc")->get();
 
-    // function show2()
-    // {
-    //     //アップロードした画像を取得
-    //     $uploads = UploadImage::orderBy("id", "desc")->get();
-
-    //     return view("card/create", [
-    //         "images" => $uploads
-    //     ]);
-    // }
-}
+//         return view("card/upload", [
+//             "images" => $uploads
+//         ]);
+//     }
+// }

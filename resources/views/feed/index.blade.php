@@ -99,17 +99,16 @@
                         <form class="mb-6" action="{{ route('feed.store') }}" method="POST">
                             @csrf
                             <div class="flex flex-col mb-4">
-                                <!-- <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="feed">User_id消す</label>
-                            <input class="border py-2 px-3 text-grey-darkest" type="integer" name="user_id" id="user_id"> -->
                                 <label class="mb-2 uppercase font-bold text-lg text-grey-darkest"
                                     for="feed">Feed</label>
-                                <input class="border py-2 px-3 text-grey-darkest" type="text" name="feed"
-                                    id="feed">
+                                <div class="flex">
+                                    <input class="flex-1 border py-2 px-3 text-grey-darkest" type="text"
+                                        name="feed" id="feed">
+                                    <button type="submit"
+                                        class="ml-2 flex-shrink-0 py-3 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none w-20 md:w-auto">Create</button>
+                                </div>
                             </div>
-                            <button type="submit"
-                                class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-                                Create
-                            </button>
+
                         </form>
                     </div>
                 </div>

@@ -49,7 +49,7 @@ class QrcodeController extends Controller
      */
     public function show(string $id)
     {
-        //フォロー確認画面に続くリンク　https://local/invite/username?user/?
+        //
     }
 
     /**

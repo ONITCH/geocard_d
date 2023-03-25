@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class UploadImage extends Model
 {
     use HasFactory;
-    protected $table = "templates";
-    protected $fillable = ["filename", "file_path"];
+
+    protected $table = 'templates';
+
+    protected $fillable = [
+        'filename',
+        'file_path',
+    ];
+
+    public function template()
+    {
+        return $this->belongsTo(Template::class, 'template_id');
+    }
 }

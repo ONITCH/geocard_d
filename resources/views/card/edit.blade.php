@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Card') }}
+            {{ __('Card Edit') }}
         </h2>
     </x-slot>
 
@@ -14,7 +14,7 @@
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-lg text-grey-dark border-b border-grey-light">
-                                    MY CARD</th>
+                                    編集</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -22,8 +22,12 @@
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <h3 class="text-left font-bold text-lg text-grey-dark">ここにMY　CARD</h3>
                                     <div class="flex">
-                                        編集するボタン
-
+                                        プロフィール画像を設定する（AVATAR）
+                                        <form action="/avatar" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="file" name="avatar">
+                                            <button type="submit">Upload Avatar</button>
+                                        </form>
                                     </div>
                                     <div class="flex">
                                         QRコード

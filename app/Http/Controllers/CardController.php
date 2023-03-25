@@ -29,9 +29,10 @@ class CardController extends Controller
      */
     public function create()
     {
-        //アップロードした画像を取得
-        $uploads = UploadImage::orderBy("id", "desc")->get();
 
+        //アップロードしたテンプレート画像を取得
+        $uploads = UploadImage::orderBy("id", "desc")->get();
+        // dd($uploads);
         return view("card/create", [
             "images" => $uploads
         ]);

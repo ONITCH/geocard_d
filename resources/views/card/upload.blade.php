@@ -34,7 +34,11 @@
                                         enctype="multipart/form-data">
                                         @csrf
                                         <input type="file" name="image" accept="image/png, image/jpeg">
-                                        <input type="submit" value="Upload">
+                                        {{-- <input type="hidden" name="template_id" value="{{ $template_id }}"> --}}
+                                        <button type="submit"
+                                            class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+                                            送信
+                                        </button>
                                     </form>
 
                                     {{-- <a href="{{ route('card/upload') }}">Upload</a>

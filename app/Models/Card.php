@@ -12,4 +12,9 @@ class Card extends Model
 
     // protected $table = "cards";
     protected $fillable = ["card_avatar", "file_path", "comments", "template_id"];
+
+    public function template()
+    {
+        return $this->belongsTo(Template::class);
+    }
 }

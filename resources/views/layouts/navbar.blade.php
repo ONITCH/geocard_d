@@ -15,7 +15,7 @@
     </a>
 
 
-    <x-nav-link :href="route('qrcode.index')" :active="request()->routeIs('qrcode.index')"
+    <x-nav-link :href="route('find.index')" :active="request()->routeIs('find.index')"
         class="flex flex-col items-center gap-1 text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd"
@@ -41,7 +41,7 @@
     {{-- <span>Feed</span> --}}
     </a>
 
-    <x-nav-link :href="route('qrcode.index')" :active="request()->routeIs('qrcode.index')"
+    <x-nav-link :href="route('friend.index')" :active="request()->routeIs('friend.index')"
         class="flex flex-col items-center gap-1 text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path

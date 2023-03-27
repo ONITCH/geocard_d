@@ -22,11 +22,18 @@
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <h3 class="text-left font-bold text-lg text-grey-dark">ここにMY　CARD</h3>
                                     <div class="flex">
-                                        編集するボタン
+                                        <a href="{{ url('card/create') }}"
+                                            class="text-sm text-gray-700 dark:text-gray-500 underline">カードを編集</a>
 
                                     </div>
                                     <div class="flex">
-                                        QRコード
+                                        <a href="{{ url('profile') }}"
+                                            class="text-sm text-gray-700 dark:text-gray-500 underline">プロフィールを編集</a>
+
+                                    </div>
+                                    <div class="flex">
+                                        <a href="{{ url('qrcode') }}"
+                                            class="text-sm text-gray-700 dark:text-gray-500 underline">MY QRCode</a>
 
                                     </div>
                                     <div class="flex">

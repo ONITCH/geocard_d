@@ -30,11 +30,11 @@
                                 @foreach ($feeds as $feed)
                                     <tr class="hover:bg-grey-lighter">
                                         <td class="py-4 px-6 border-b border-grey-light">
-                                            {{-- //avatar --}}
+                                            {{-- AVATAR --}}
                                             <div class="relative inline-block">
                                                 <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800"
-                                                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-                                                    alt="Image Description">
+                                                    src="{{ $feed->user->avatar ? Storage::url($feed->user->file_path) : 'https://dummyimage.com/300x300/000/fff&text=Avatar' }}"
+                                                    alt="Avatar Image">
                                                 <span
                                                     class="absolute bottom-0 right-0 block h-1.5 w-1.5 rounded-full ring-2 ring-white bg-gray-400"></span>
                                             </div>

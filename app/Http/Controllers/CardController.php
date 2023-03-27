@@ -79,15 +79,11 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // function show2()
-    // {
-    //     //アップロードした画像を取得
-    //     $uploads = UploadImage::orderBy("id", "desc")->get();
-
-    //     return view("card/create", [
-    //         "images" => $uploads
-    //     ]);
-    // }
+    function show()
+    {
+        //アップロードした画像を取得
+        return view('card.edit');
+    }
 
     /**
      * Show the form for editing the specified resource.

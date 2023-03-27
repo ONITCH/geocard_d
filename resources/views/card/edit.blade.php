@@ -23,7 +23,8 @@
                                     <h3 class="text-left font-bold text-lg text-grey-dark">ここにMY　CARD</h3>
                                     <div class="flex">
                                         プロフィール画像を設定する（AVATAR）
-                                        <form action="/avatar" method="POST" enctype="multipart/form-data">
+                                        <form action={{ route('card_edit_page') }} method="POST"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             <input type="file" name="avatar">
                                             <button type="submit">Upload Avatar</button>

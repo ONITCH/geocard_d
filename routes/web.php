@@ -21,6 +21,7 @@ use App\Http\Controllers\TemplateController;
 
 Route::middleware('auth')->group(function () {
     // Route::post('/card/{id}', [CardController::class, 'store'])->name('card.store');
+    Route::post('card/edit', [App\Http\Controllers\CardController::class, "show"])->name("card_edit_page");
 
     Route::post('card/create', [App\Http\Controllers\CardController::class, "store"])->name("card.create");
 
@@ -57,6 +58,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::post('/profile', [ProfileController::class, 'uploadAvatar'])->name('avatar.upload');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -46,8 +46,7 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->template_id);
-
+        // バリデーション
         $request->validate([
             'image' => 'required|file|image|mimes:png,jpeg'
         ]);
@@ -57,21 +56,29 @@ class CardController extends Controller
         $template = Template::find($template_id);
 
         if ($upload_image && $template) {
-            //アップロードされた画像を保存する
+            // アップロードされた画像を保存する
             $path = $upload_image->store('uploads', "public");
-            //画像の保存に成功したらDBに記録する
+            // 画像の保存に成功したらDBに記録する
             if ($path) {
-
-                Card::create([
+                // カードを作成し、card_id を取得する
+                $card = Card::create([
                     "card_avatar" => $upload_image->getClientOriginalName(),
                     "file_path" => $path,
                     "comments" => $request->comments,
                     "template_id" => $request->template_id,
+                    "residence" => $request->residence,
                 ]);
+                $card_id = $card->id;
+                // ログインしているユーザーの card_id を更新する
+                $user = Auth::user();
+                $user->card_id = $card_id;
+                $user->save();
             }
         }
+
         return redirect("/card/create");
     }
+
 
     /**
      * Display the specified resource.

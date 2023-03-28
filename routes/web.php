@@ -6,7 +6,7 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\QrcodeController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\CardController;
-use App\Http\Controllers\TemplateController;
+// use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\FindController;
 use App\Http\Controllers\FriendController;
 /*

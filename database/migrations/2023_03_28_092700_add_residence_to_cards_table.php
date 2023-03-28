@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+
         Schema::table('cards', function (Blueprint $table) {
             $table->string('residence')->nullable()->after('template_id');
         });
@@ -26,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('cards', function (Blueprint $table) {
-            //
+            $table->dropColumn('residence');
         });
     }
 };

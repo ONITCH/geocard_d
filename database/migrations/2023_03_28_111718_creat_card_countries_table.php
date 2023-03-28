@@ -13,15 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('card_countries', function (Blueprint $table) {
-            $table->unsignedBigInteger('card_id');
-            $table->unsignedBigInteger('country_id');
-            $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
-            $table->primary(['card_id', 'country_id']);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('card_countries')) {
+            Schema::create('card_countries', function (Blueprint $table) {
+                $table->unsignedBigInteger('card_id');
+                $table->unsignedBigInteger('country_id');
+                $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');
+                $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+                $table->primary(['card_id', 'country_id']);
+                $table->timestamps();
+            });
+        }
     }
+
 
     /**
      * Reverse the migrations.

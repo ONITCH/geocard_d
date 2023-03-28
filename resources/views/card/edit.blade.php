@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Card') }}
+            {{ __('Card Edit') }}
         </h2>
     </x-slot>
 
@@ -14,7 +14,7 @@
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest font-bold uppercase text-lg text-grey-dark border-b border-grey-light">
-                                    MY CARD</th>
+                                    編集</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -22,18 +22,16 @@
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <h3 class="text-left font-bold text-lg text-grey-dark">ここにMY　CARD</h3>
                                     <div class="flex">
-                                        <a href="{{ url('card/create') }}"
-                                            class="text-sm text-gray-700 dark:text-gray-500 underline">カードを編集</a>
-
+                                        プロフィール画像を設定する（AVATAR）
+                                        <form action={{ route('card_edit_page') }} method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="file" name="avatar">
+                                            <button type="submit">Upload Avatar</button>
+                                        </form>
                                     </div>
                                     <div class="flex">
-                                        <a href="{{ url('profile') }}"
-                                            class="text-sm text-gray-700 dark:text-gray-500 underline">プロフィールを編集</a>
-
-                                    </div>
-                                    <div class="flex">
-                                        <a href="{{ url('qrcode') }}"
-                                            class="text-sm text-gray-700 dark:text-gray-500 underline">MY QRCode</a>
+                                        QRコード
 
                                     </div>
                                     <div class="flex">

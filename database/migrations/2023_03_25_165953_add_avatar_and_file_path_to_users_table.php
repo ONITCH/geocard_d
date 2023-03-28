@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('templates')) {
-            Schema::create('templates', function (Blueprint $table) {
-                $table->id();
-                $table->timestamps();
-            });
-        }
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('avatar')->after('password')->nullable();
+            $table->string('file_path')->after('avatar')->nullable();
+        });
     }
 
     /**
@@ -28,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('templates');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['avatar', 'file_path']);
+        });
     }
 };

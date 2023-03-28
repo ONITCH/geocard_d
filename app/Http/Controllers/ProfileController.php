@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -36,6 +38,36 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+
+
+    public function uploadAvatar(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,bmp,gif|max:2048',
+        ]);
+
+        if (auth()->check()) {
+            $user = auth()->user();
+            $file = $request->file('avatar');
+            $image = Image::make($file)->fit(300);
+            $filename = $user->id . '.' . $file->getClientOriginalExtension();
+            $path = 'avatars/' . $filename;
+            Storage::disk('public')->put($path, (string) $image->encode());
+
+            $user->update([
+                'avatar' => $filename,
+                'file_path' => $path,
+            ]);
+
+            return redirect()->route('profile.edit')->with('status', 'Profile updated successfully.');
+        } else {
+            return redirect()->back()->with('status', 'Unauthorized access');
+        }
+    }
+
+
+
+
 
     /**
      * Delete the user's account.

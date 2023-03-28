@@ -41,20 +41,84 @@
                                     id="comments">
                             </div>
 
-                            <label class="mb-2 font-bold text-lg text-grey-darkest" for="card_avatar">UPLOAD
-                                IMAGE</label>
-                            <input type="file" name="image" accept="image/png, image/jpeg">
-                        </div>
+                            <div class="p-6 bg-white border-b border-gray-200">
+                                <div class="flex flex-col mb-4">
+                                    <label class="mb-2 font-bold text-lg text-grey-darkest" for="residence">居住地</label>
+                                    <input class="border py-2 px-3 text-grey-darkest" type="text" name="residence"
+                                        id="residence">
+                                </div>
 
-                        <div class="flex flex-col mb-4">
-                        </div>
-                        <button type="submit"
-                            class="w-full py-3 mt-6 font-medium tracking-widest text-white bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-                            Create
-                        </button>
+
+                                <label class="mb-2 font-bold text-lg text-grey-darkest" for="card_avatar">UPLOAD
+                                    IMAGE</label>
+                                <input type="file" name="image" accept="image/png, image/jpeg">
+                            </div>
+
+
+
+                            <div class="flex flex-col mb-4">
+                            </div>
+                            <button type="submit"
+                                class="w-full py-3 mt-6 font-medium tracking-widest text-white bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+                                Create
+                            </button>
                     </form>
+                    {{-- 国選択： --}}
+                    <form method="POST" action="{{ route('card.store') }}">
+                        @csrf
+                        <div>
+                            <label>Country:</label>
+                            @foreach ($countries as $country)
+                                <button type="button" class="country-button"
+                                    data-country="{{ $country->id }}">{{ $country->name }}</button>
+                            @endforeach
+                        </div>
+                        <div>
+                            <input type="hidden" id="country_id" name="country_id">
+                            <button type="submit" id="submit-button" disabled>Submit</button>
+                        </div>
+                    </form>
+                    {{-- 国選択： --}}
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        const buttons = document.querySelectorAll('.country-button');
+        const countryIdInput = document.querySelector('#country_id');
+        const submitButton = document.querySelector('#submit-button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Select the button
+                buttons.forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+
+                // Set the country id in the hidden input
+                countryIdInput.value = button.dataset.country;
+
+                // Enable the submit button
+                submitButton.disabled = false;
+            });
+        });
+
+        // Add a click event listener to a new button that selects all buttons
+        const selectAllButton = document.createElement('button');
+        selectAllButton.textContent = 'Select All';
+        selectAllButton.addEventListener('click', () => {
+            buttons.forEach(button => {
+                button.classList.add('selected');
+                countryIdInput.value = button.dataset.country;
+            });
+            submitButton.disabled = false;
+        });
+        document.querySelector('form').prepend(selectAllButton);
+    </script>
+
+    <style>
+        .selected {
+            background-color: blue;
+            color: white;
+        }
+    </style>
 </x-app-layout>

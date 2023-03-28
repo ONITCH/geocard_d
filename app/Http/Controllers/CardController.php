@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Card;
 use App\Models\UploadImage;
 use App\Models\Template;
+use App\Models\Country;
 use Str;
 
 class CardController extends Controller
@@ -19,7 +20,9 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('card.index');
+        $cardId = Auth::user()->card_id;
+        $card = Card::where('id', $cardId)->with('countries')->first();
+        return view('card.index', compact('card'));
     }
 
     /**
@@ -29,12 +32,13 @@ class CardController extends Controller
      */
     public function create()
     {
-
+        $countries = Country::all();
         //アップロードしたテンプレート画像を取得
         $uploads = UploadImage::orderBy("id", "desc")->get();
         // dd($uploads);
         return view("card/create", [
-            "images" => $uploads
+            "images" => $uploads,
+            "countries" => $countries
         ]);
     }
 

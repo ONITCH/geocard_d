@@ -21,6 +21,21 @@
                             <tr class="hover:bg-grey-lighter">
                                 <td class="py-4 px-6 border-b border-grey-light">
                                     <h3 class="text-left font-bold text-lg text-grey-dark">ここにMY　CARD</h3>
+                                    {{-- @extends('layouts.app') --}}
+
+                                    {{-- @section('content') --}}
+                                    <div class="card">
+                                        {{-- <h2>{{ $card->id }}</h2> --}}
+                                        {{-- <p>Template ID: {{ $card->template_id }}</p> --}}
+                                        <img src="{{ asset('storage/' . $card->template->file_path) }}"
+                                            alt="Template Image">
+                                        <ul>
+                                            @foreach ($card->countries as $country)
+                                                <li>{{ $country->name }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    {{-- @endsection --}}
                                     <div class="flex">
                                         <a href="{{ url('card/create') }}"
                                             class="text-sm text-gray-700 dark:text-gray-500 underline">カードを編集</a>
@@ -44,6 +59,66 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    {{-- 以下行ったことある国を選択するボタン --}}
+                    <form method="POST" action="{{ route('card.store') }}">
+                        @csrf
+
+                        {{-- <div>
+                            <label for="template_id">Template ID:</label>
+                            <input type="text" id="template_id" name="template_id">
+                        </div> --}}
+
+                        <div>
+                            <label>Countries you've been:</label>
+                            @foreach ($card->countries as $country)
+                                {{-- ボタンである必要はない・修正要 --}}
+                                <button type="button" class="country-button"
+                                    data-country="{{ $country->id }}">{{ $country->name }}</button>
+                            @endforeach
+                        </div>
+                        <div>
+                            <div>
+                                <p>From: {{ $residence }}</p>
+                            </div>
+                            <div>
+                                <p>Username: {{ $username }}</p>
+                            </div>
+                        </div>
+
+                        {{-- <div>
+                            <input type="hidden" id="country_id" name="country_id">
+                            <button type="submit" id="submit-button" disabled>Submit</button>
+                        </div> --}}
+
+                    </form>
+
+                    {{-- <script>
+                        const buttons = document.querySelectorAll('.country-button');
+                        const countryIdInput = document.querySelector('#country_id');
+                        const submitButton = document.querySelector('#submit-button');
+
+                        buttons.forEach(button => {
+                            button.addEventListener('click', () => {
+                                // Select the button
+                                buttons.forEach(btn => btn.classList.remove('selected'));
+                                button.classList.add('selected');
+
+                                // Set the country id in the hidden input
+                                countryIdInput.value = button.dataset.country;
+
+                                // Enable the submit button
+                                submitButton.disabled = false;
+                            });
+                        });
+                    </script>
+
+                    <style>
+                        .selected {
+                            background-color: blue;
+                            color: white;
+                        }
+                    </style> --}}
                 </div>
             </div>
         </div>

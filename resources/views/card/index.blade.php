@@ -72,9 +72,18 @@
                         <div>
                             <label>Countries you've been:</label>
                             @foreach ($card->countries as $country)
+                                {{-- ボタンである必要はない・修正要 --}}
                                 <button type="button" class="country-button"
                                     data-country="{{ $country->id }}">{{ $country->name }}</button>
                             @endforeach
+                        </div>
+                        <div>
+                            <div>
+                                <p>From: {{ $residence }}</p>
+                            </div>
+                            <div>
+                                <p>Username: {{ $username }}</p>
+                            </div>
                         </div>
 
                         {{-- <div>

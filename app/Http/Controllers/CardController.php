@@ -22,7 +22,9 @@ class CardController extends Controller
     {
         $cardId = Auth::user()->card_id;
         $card = Card::where('id', $cardId)->with('countries')->first();
-        return view('card.index', compact('card'));
+        $residence = $card->residence; // cardsテーブルからresidence情報を取得
+        $username = Auth::user()->name; // ユーザー名を取得
+        return view('card.index', compact('card', 'residence', 'username'));
     }
 
     /**

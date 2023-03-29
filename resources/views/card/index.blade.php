@@ -30,11 +30,11 @@
                                         @if (isset($card->template))
                                             <img src="{{ asset('storage/' . $card->template->file_path) }}">
                                         @endif
-                                        <ul>
+                                        {{-- <ul>
                                             @foreach ($card->countries as $country)
                                                 <li>{{ $country->name }}</li>
                                             @endforeach
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                     {{-- @endsection --}}
                                     <div class="flex">

@@ -33,7 +33,6 @@
                                             {{-- AVATAR --}}
                                             <div class="relative inline-block">
                                                 <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800"
-                                                    <img class="rounded-full"
                                                     src="{{ $feed->user->avatar ? Storage::url($feed->user->file_path) : asset('storage/avatars/' . auth()->user()->avatar) }}"
                                                     alt="Avatar Image">
                                                 <span

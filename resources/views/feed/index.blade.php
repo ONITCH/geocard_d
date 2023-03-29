@@ -33,7 +33,7 @@
                                             {{-- AVATAR --}}
                                             <div class="relative inline-block">
                                                 <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800"
-                                                    src="{{ $feed->user->avatar ? Storage::url($feed->user->file_path) : asset('storage/avatars/' . auth()->user()->avatar) }}"
+                                                    src="{{ $feed->user->avatar ? asset('storage/' . $feed->user->file_path) : 'https://dummyimage.com/300x300/000/fff&text=Avatar' }}"
                                                     alt="Avatar Image">
                                                 <span
                                                     class="absolute bottom-0 right-0 block h-1.5 w-1.5 rounded-full ring-2 ring-white bg-gray-400"></span>

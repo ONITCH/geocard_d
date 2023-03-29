@@ -79,7 +79,9 @@
                         </div>
                         <div>
                             <div>
-                                <p>From: {{ $residence }}</p>
+                                @if ($residence)
+                                    <p>Residence: {{ $residence }}</p>
+                                @endif
                             </div>
                             <div>
                                 <p>Username: {{ $username }}</p>

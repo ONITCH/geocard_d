@@ -46,7 +46,8 @@
 
                                     @foreach ($images as $image)
                                         <div style="width: 15rem; float:left; margin: 16px;">
-                                            <img src="{{ Storage::url($image->file_path) }}" style="width:100%;" />
+                                            <img src="{{ asset(Storage::url($image->file_path)) }}"
+                                                style="width:100%;" />
                                             <p>{{ $image->filename }}</p>
                                         </div>
                                     @endforeach

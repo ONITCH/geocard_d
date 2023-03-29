@@ -27,8 +27,9 @@
                                     <div class="card">
                                         {{-- <h2>{{ $card->id }}</h2> --}}
                                         {{-- <p>Template ID: {{ $card->template_id }}</p> --}}
-                                        <img src="{{ asset('storage/' . $card->template->file_path) }}"
-                                            alt="Template Image">
+                                        @if (isset($card->template))
+                                            <img src="{{ asset('storage/' . $card->template->file_path) }}">
+                                        @endif
                                         <ul>
                                             @foreach ($card->countries as $country)
                                                 <li>{{ $country->name }}</li>

@@ -72,11 +72,13 @@
 
                         <div>
                             <label>Countries you've been:</label>
-                            @foreach ($card->countries as $country)
-                                {{-- ボタンである必要はない・修正要 --}}
-                                <button type="button" class="country-button"
-                                    data-country="{{ $country->id }}">{{ $country->name }}</button>
-                            @endforeach
+                            @if (isset($card) && isset($card->countries))
+                                @foreach ($card->countries as $country)
+                                    {{-- ボタンである必要はない・修正要 --}}
+                                    <button type="button" class="country-button"
+                                        data-country="{{ $country->id }}">{{ $country->name }}</button>
+                                @endforeach
+                            @endif
                         </div>
                         <div>
                             <div>

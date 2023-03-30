@@ -37,10 +37,11 @@ Route::middleware('auth')->group(function () {
 
     // Route::get('card/upload', [App\Http\Controllers\TemplateController::class, "show"])->name("template");
     // Route::get('card/create', [App\Http\Controllers\CardController::class, "show2"])->name("card.create");
-    // 追加
+
     Route::get('/card/create', [CardController::class, 'create'])->name('card.create');
     Route::post('/card/store', [CardController::class, 'store'])->name('card.store');
 
+    Route::get('/dashboard', [App\Http\Controllers\CardController::class, "index"]);
     Route::get('/card/index', [App\Http\Controllers\CardController::class, "index"])->name('card.index');
     // Route::get('/', 'CardController@index')->name('card.index');
 

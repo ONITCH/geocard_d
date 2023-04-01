@@ -20,7 +20,7 @@
                     <tbody>
                         <tr class="hover:bg-grey-lighter">
                             <td class="py-4 px-6 border-b border-grey-light">
-                                <h3 class="text-left font-bold text-lg text-grey-dark">ここにMY　CARD</h3>
+                                {{-- <h3 class="text-left font-bold text-lg text-grey-dark">ここにMY　CARD</h3> --}}
                                 {{-- @extends('layouts.app') --}}
                                 @include('partials.show')
                                 {{-- @section('content') --}}

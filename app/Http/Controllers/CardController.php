@@ -23,8 +23,9 @@ class CardController extends Controller
         $cardId = Auth::user()->card_id;
         $card = Card::where('id', $cardId)->with('countries')->first();
         $residence = $card ? $card->residence : ''; // $cardオブジェクトがnullでないことを確認し、nullの場合は空の文字列を設定
+        $comments = $card ? $card->comments : '';
         $username = Auth::user()->name; // ユーザー名を取得
-        return view('card.index', compact('card', 'residence', 'username'));
+        return view('card.index', compact('card', 'residence', 'username', 'comments'));
     }
 
     /**
@@ -35,12 +36,12 @@ class CardController extends Controller
     public function create()
     {
         $countries = Country::all();
-        //アップロードしたテンプレート画像を取得
         $uploads = UploadImage::orderBy("id", "desc")->get();
-        // dd($uploads);
-        return view("card/create", [
+        $templates = Template::all();
+        return view("card.create", [
             "images" => $uploads,
-            "countries" => $countries
+            "countries" => $countries,
+            "templates" => $templates,
         ]);
     }
 

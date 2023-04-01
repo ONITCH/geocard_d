@@ -12,7 +12,7 @@ class UploadController extends Controller
         $uploads = UploadImage::orderBy("id", "desc")->get();
 
         return view("card/upload", [
-            "images" => $uploads
+            "images" => $uploads,
         ]);
     }
 
@@ -32,7 +32,10 @@ class UploadController extends Controller
                     "filename" => $upload_image->getClientOriginalName(),
                     "file_path" => $path,
                     // 'template_id'=>
-                    "paid" => $request->paid
+                    "paid" => $request->paid,
+                    "box_shadow" => $request->box_shadow,
+                    "CSS1" => $request->CSS1,
+                    "CSS2" => $request->CSS2
                 ]);
             }
         }

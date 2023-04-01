@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->followings->contains($user);
     }
+
+    public function card()
+    {
+        return $this->belongsTo(Card::class);
+    }
 }

@@ -16,7 +16,14 @@ class FeedController extends Controller
      */
     public function index()
     {
-        $feeds = Feed::getAllOrderByUpdated_at();
+        // フォローしているユーザを取得する
+        $followings = User::find(Auth::id())->followings->pluck('id')->all();
+        // 自分とフォローしている人が投稿したツイートを取得する
+        $feeds = Feed::query()
+            ->where('user_id', Auth::id())
+            ->orWhereIn('user_id', $followings)
+            ->orderBy('updated_at', 'desc')
+            ->get();
         return view('feed.index', compact('feeds'));
     }
 

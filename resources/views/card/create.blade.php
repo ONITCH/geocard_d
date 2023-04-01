@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Reggae+One&display=swap" rel="stylesheet">
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -16,23 +18,33 @@
                         <div class="flex flex-col mb-4">
                             @foreach ($images as $image)
                                 <div class="flex flex-col gap-y-3">
-
-                                    <div class="flex">
+                                    <div>
                                         <input type="radio" name="template_id"
                                             class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                             id="template_{{ $image->id }}" value="{{ $image->id }}">
                                         <label for="template_{{ $image->id }}"
                                             class="text-sm text-gray-500 ml-2 dark:text-gray-400">{{ $image->filename }}</label>
                                     </div>
-
-                                    <div style="width: 8rem; float:left; margin: 16px;">
-                                        <img src="{{ asset(Storage::url($image->file_path)) }}" style="width:100%;">
-
-                                        {{-- <p>{{ $image->filename }}</p> --}}
-                                        <p>{{ $image->id }}</p>
+                                    <div style="position: relative; width: 100%; margin-bottom: 16px;">
+                                        <img src="{{ asset(Storage::url($image->file_path)) }}"
+                                            style="display: block; max-width: 100%; height: auto; box-shadow: 0 0 10px rgb(69, 69, 69);">
+                                        @php
+                                            $template = $templates->where('filename', $image->filename)->first();
+                                            // dd($template);
+                                        @endphp
+                                        @if ($template)
+                                            <div class="card-content" style="{{ $template->CSS1 }}">
+                                                <p style="margin: 0; font-size: 12px;">"タイの王様"</p>
+                                                <p style="margin: 0; font-size: 18px;">RYOHEI ONIZUKA</p>
+                                                <p style="margin: 0; font-size: 12px;">from FUKUOKA, JAPAN</p>
+                                            </div>
+                                            <img style="{{ $template->CSS2 }}" src="{{ '/image/avatar_default2.png' }}"
+                                                alt="Card Avatar Image">
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach
+
                         </div>
                         {{-- コメント --}}
                         <div class="p-6 bg-white border-b border-gray-200">

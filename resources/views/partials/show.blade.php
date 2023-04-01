@@ -22,10 +22,8 @@
     @if ($card && $card->file_path)
         {{-- CSS2 --}}
         <img style="{{ $card && $card->template ? $card->template->CSS2 : '' }}"
-            src="{{ $card->card_avatar ? asset('storage/' . $card->file_path) : '/image/avatar_default.png' }}"
-            alt="Card Avatar Image">
+            src="{{ asset('storage/' . $card->file_path) }}" alt="Card Avatar Image">
     @else
-        <p></p>
     @endif
 </div>
 

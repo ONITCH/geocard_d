@@ -38,8 +38,8 @@
                                                 <p style="margin: 0; font-size: 18px;">RYOHEI ONIZUKA</p>
                                                 <p style="margin: 0; font-size: 12px;">from FUKUOKA, JAPAN</p>
                                             </div>
-                                            <img style="{{ $template->CSS2 }}" src="{{ '/image/avatar_default2.png' }}"
-                                                alt="Card Avatar Image">
+                                            <img style="{{ $template->CSS2 }}"
+                                                src="{{ asset('/image/avatar_default2.png') }}" alt="Card Avatar Image">
                                         @endif
                                     </div>
                                 </div>

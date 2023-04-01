@@ -5,7 +5,8 @@
         <img src="{{ asset('storage/' . $card->template->file_path) }}"
             style="display: block; max-width: 100%; height: auto; box-shadow: {{ $card->template->box_shadow }};">
     @else
-        <img src="{{ asset('/image/geosample3.png') }}" alt="Default Image">
+        <img src="{{ asset('/image/Default_Card.png') }}" alt="Default Image"
+            style="box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3)">
     @endif
     {{-- CSS1 --}}
     <div class="card-content"

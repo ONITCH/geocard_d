@@ -35,7 +35,7 @@
                                         @if ($template)
                                             <div class="card-content" style="{{ $template->CSS1 }}">
                                                 <p style="margin: 0; font-size: 12px;">"タイの王様"</p>
-                                                <p style="margin: 0; font-size: 18px;">RYOHEI ONIZUKA</p>
+                                                <p style="margin: 0; font-size: 18px;">YOUR NAME</p>
                                                 <p style="margin: 0; font-size: 12px;">from FUKUOKA, JAPAN</p>
                                             </div>
                                             <img style="{{ $template->CSS2 }}"

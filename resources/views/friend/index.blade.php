@@ -42,16 +42,17 @@
                                         @endphp
                                         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                                             <div class="p-2">
-                                                <div class="card" style="position: relative; width: 100%;">
+                                                <div class="card"
+                                                    style="position: relative; width: 100%; margin-bottom:10px">
                                                     @if ($friend->card)
                                                         <div class="card" style="position: relative; width: 100%;">
-                                                            @if ($friend->card->template)
-                                                                <img src="{{ asset('storage/' . $friend->card->template->file_path) }}"
-                                                                    style="display: block; max-width: 100%; height: auto; box-shadow: {{ $friend->card->template->box_shadow }};">
-                                                            @else
-                                                                <img src="{{ asset('/image/geosample3.png') }}"
+                                                            {{-- @if ($friend->card->template) --}}
+                                                            <img src="{{ asset('storage/' . $friend->card->template->file_path) }}"
+                                                                style="display: block; max-width: 100%; height: auto; box-shadow: {{ $friend->card->template->box_shadow }};">
+                                                            {{-- @else
+                                                                <img src="{{ asset('/image/Default_Card.png') }}"
                                                                     alt="Default Image">
-                                                            @endif
+                                                            @endif --}}
                                                             {{-- CSS1 --}}
                                                             <div class="card-content"
                                                                 style="{{ $friend->card && $friend->card->template && $friend->card->template->CSS1 ? $friend->card->template->CSS1 : 'position: absolute; top: 80px; left: 50px; right: auto; color: rgba(0,0,0); text-align: left; font-family: \'Noto Sans JP\', sans-serif;' }}">
@@ -78,7 +79,7 @@
                                                         </div>
                                                     @else
                                                         <div class="card" style="position: relative; width: 100%;">
-                                                            <img src="{{ asset('/image/geosample3.png') }}"
+                                                            <img src="{{ asset('/image/Default_Card.png') }}"
                                                                 alt="Default Image">
                                                             <div class="card-content"
                                                                 style="position: absolute; top: 80px; left: 50px; right: auto; color: rgba(0,0,0); text-align: left; font-family: 'Noto Sans JP', sans-serif;">

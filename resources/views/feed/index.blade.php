@@ -20,8 +20,8 @@
 </style>
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Feed Index') }}
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('FEED') }}
         </h2>
     </x-slot>
 
@@ -33,8 +33,9 @@
                         <thead>
                             <tr>
                                 <th
-                                    class="py-4 px-6 bg-grey-lightest font-bold uppercase text-lg text-grey-dark border-b border-grey-light">
-                                    feed</th>
+                                    class="py-4 px-6 bg-grey-lightest uppercase text-lg text-grey-dark border-b border-grey-light">
+                                    今後どこに行く？
+                                </th>
                             </tr>
                         </thead>
                         <tbody>

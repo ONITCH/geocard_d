@@ -1,19 +1,105 @@
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Reggae+One&display=swap" rel="stylesheet">
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Find') }}
+            {{ __('FRIENDS') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                            @php
+                                $cardId = Auth::user()->card_id;
+                                $card = App\Models\Card::where('id', $cardId)
+                                    ->with('countries')
+                                    ->first();
+                                $residence = $card ? $card->residence : ''; // $cardオブジェクトがnullでないことを確認し、nullの場合は空の文字列を設定
+                                $comments = $card ? $card->comments : '';
+                                $username = Auth::user()->name; // ユーザー名を取得
+                            @endphp
+                            {{-- <div class="p-6 text-gray-900 dark:text-gray-100"> --}}
+                            {{-- <div>{{ __('WELCOME! ') }}{{ Auth::user()->name }}</div> --}}
+                            {{-- @include('partials.show') --}}
 
-                    Friend名刺一覧画面
-                    {{-- <div>{{ __("WELCOME! ") }}{{ Auth::user()->name }}</div>
-                    <img src="{{ asset('image/geocardsample2.png') }}" alt=""> --}}
-                    {{-- {{ $templates->filename }} --}}
+                            <div class="py-6">
+                                {{-- <h3 class="text-xl mb-4">{{ __('Your Friends\' Cards') }}</h3> --}}
+                                {{-- @php
+                                            dd(Auth::user()->followings);
+                                        @endphp
+                                        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"> --}}
+                                @if (Auth::user()->followings)
+                                    @foreach (Auth::user()->followings as $friend)
+                                        {{-- @if ($friend->card) --}}
+                                        @php
+                                            $card = $friend->card;
+                                            $residence = $card ? $card->residence : '';
+                                            $comments = $card ? $card->comments : '';
+                                            $username = $friend->name;
+                                        @endphp
+                                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                                            <div class="p-2">
+                                                <div class="card" style="position: relative; width: 100%;">
+                                                    @if ($friend->card)
+                                                        <div class="card" style="position: relative; width: 100%;">
+                                                            @if ($friend->card->template)
+                                                                <img src="{{ asset('storage/' . $friend->card->template->file_path) }}"
+                                                                    style="display: block; max-width: 100%; height: auto; box-shadow: {{ $friend->card->template->box_shadow }};">
+                                                            @else
+                                                                <img src="{{ asset('/image/geosample3.png') }}"
+                                                                    alt="Default Image">
+                                                            @endif
+                                                            {{-- CSS1 --}}
+                                                            <div class="card-content"
+                                                                style="{{ $friend->card && $friend->card->template && $friend->card->template->CSS1 ? $friend->card->template->CSS1 : 'position: absolute; top: 80px; left: 50px; right: auto; color: rgba(0,0,0); text-align: left; font-family: \'Noto Sans JP\', sans-serif;' }}">
+
+                                                                @if (!empty($friend->card->comments))
+                                                                    <p style="margin: 0; font-size: 12px;">
+                                                                        "{{ $friend->card->comments }}"</p>
+                                                                @endif
+                                                                <p style="margin: 0; font-size: 18px;">
+                                                                    {{ $friend->name }}</p>
+                                                                @if (!empty($friend->card->residence))
+                                                                    <p style="margin: 0; font-size: 12px;">from
+                                                                        {{ $friend->card->residence }}</p>
+                                                                @endif
+                                                            </div>
+                                                            @if ($friend->card->file_path)
+                                                                {{-- CSS2 --}}
+                                                                <img style="{{ $friend->card && $friend->card->template ? $friend->card->template->CSS2 : '' }}"
+                                                                    src="{{ $friend->card->card_avatar ? asset('storage/' . $friend->card->file_path) : '/image/avatar_default.png' }}"
+                                                                    alt="Card Avatar Image">
+                                                            @else
+                                                                <p></p>
+                                                            @endif
+                                                        </div>
+                                                    @else
+                                                        <div class="card" style="position: relative; width: 100%;">
+                                                            <img src="{{ asset('/image/geosample3.png') }}"
+                                                                alt="Default Image">
+                                                            <div class="card-content"
+                                                                style="position: absolute; top: 80px; left: 50px; right: auto; color: rgba(0,0,0); text-align: left; font-family: 'Noto Sans JP', sans-serif;">
+                                                                <p style="margin: 0; font-size: 18px;">
+                                                                    {{ $friend->name }}</p>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- @endif --}}
+                                    @endforeach
+                                @endif
+                                {{-- </div> --}}
+                                {{-- </div> --}}
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>

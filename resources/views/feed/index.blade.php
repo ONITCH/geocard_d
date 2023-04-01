@@ -25,7 +25,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-6">
         <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -45,7 +45,7 @@
                                         {{-- AVATAR --}}
                                         <div class="relative inline-block flex">
                                             <img style="height: 2.5rem; width: 2.5rem; border-radius: 50%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);"
-                                                src="{{ $feed->user->avatar ? asset('storage/' . $feed->user->file_path) : asset('image/avatar_default.png') }}"
+                                                src="{{ $feed->user->avatar ? asset('storage/' . $feed->user->file_path) : asset('image/avatar_default3.png') }}"
                                                 alt="Avatar Image">
                                             {{-- <span
                                                     class="absolute bottom-0 right-0 block h-1.5 w-1.5 rounded-full ring-2 ring-white bg-gray-400"></span> --}}

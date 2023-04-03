@@ -42,54 +42,58 @@
                                         @endphp
                                         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                                             <div class="p-2">
-                                                <div class="card"
-                                                    style="position: relative; width: 100%; margin-bottom:10px">
-                                                    @if ($friend->card)
-                                                        <div class="card" style="position: relative; width: 100%;">
-                                                            {{-- @if ($friend->card->template) --}}
-                                                            <img src="{{ asset('storage/' . $friend->card->template->file_path) }}"
-                                                                style="display: block; max-width: 100%; height: auto; box-shadow: {{ $friend->card->template->box_shadow }};">
-                                                            {{-- @else
+                                                <a href="{{ route('user.show', ['user' => $friend->id]) }}">
+                                                    <div class="card"
+                                                        style="position: relative; width: 100%; margin-bottom:10px">
+                                                        @if ($friend->card)
+                                                            <div class="card"
+                                                                style="position: relative; width: 100%;">
+                                                                {{-- @if ($friend->card->template) --}}
+                                                                <img src="{{ asset('storage/' . $friend->card->template->file_path) }}"
+                                                                    style="display: block; max-width: 100%; height: auto; box-shadow: {{ $friend->card->template->box_shadow }};">
+                                                                {{-- @else
                                                                 <img src="{{ asset('/image/Default_Card.png') }}"
                                                                     alt="Default Image">
                                                             @endif --}}
-                                                            {{-- CSS1 --}}
-                                                            <div class="card-content"
-                                                                style="{{ $friend->card && $friend->card->template && $friend->card->template->CSS1 ? $friend->card->template->CSS1 : 'position: absolute; top: 80px; left: 50px; right: auto; color: rgba(0,0,0); text-align: left; font-family: \'Noto Sans JP\', sans-serif;' }}">
+                                                                {{-- CSS1 --}}
+                                                                <div class="card-content"
+                                                                    style="{{ $friend->card && $friend->card->template && $friend->card->template->CSS1 ? $friend->card->template->CSS1 : 'position: absolute; top: 80px; left: 50px; right: auto; color: rgba(0,0,0); text-align: left; font-family: \'Noto Sans JP\', sans-serif;' }}">
 
-                                                                @if (!empty($friend->card->comments))
-                                                                    <p style="margin: 0; font-size: 12px;">
-                                                                        "{{ $friend->card->comments }}"</p>
-                                                                @endif
-                                                                <p style="margin: 0; font-size: 18px;">
-                                                                    {{ $friend->name }}</p>
-                                                                @if (!empty($friend->card->residence))
-                                                                    <p style="margin: 0; font-size: 12px;">from
-                                                                        {{ $friend->card->residence }}</p>
+                                                                    @if (!empty($friend->card->comments))
+                                                                        <p style="margin: 0; font-size: 12px;">
+                                                                            "{{ $friend->card->comments }}"</p>
+                                                                    @endif
+                                                                    <p style="margin: 0; font-size: 18px;">
+                                                                        {{ $friend->name }}</p>
+                                                                    @if (!empty($friend->card->residence))
+                                                                        <p style="margin: 0; font-size: 12px;">from
+                                                                            {{ $friend->card->residence }}</p>
+                                                                    @endif
+                                                                </div>
+                                                                @if ($friend->card->file_path)
+                                                                    {{-- CSS2 --}}
+                                                                    <img style="{{ $friend->card && $friend->card->template ? $friend->card->template->CSS2 : '' }}"
+                                                                        src="{{ $friend->card->card_avatar ? asset('storage/' . $friend->card->file_path) : '/image/avatar_default.png' }}"
+                                                                        alt="Card Avatar Image">
+                                                                @else
+                                                                    <p></p>
                                                                 @endif
                                                             </div>
-                                                            @if ($friend->card->file_path)
-                                                                {{-- CSS2 --}}
-                                                                <img style="{{ $friend->card && $friend->card->template ? $friend->card->template->CSS2 : '' }}"
-                                                                    src="{{ $friend->card->card_avatar ? asset('storage/' . $friend->card->file_path) : '/image/avatar_default.png' }}"
-                                                                    alt="Card Avatar Image">
-                                                            @else
-                                                                <p></p>
-                                                            @endif
-                                                        </div>
-                                                    @else
-                                                        <div class="card" style="position: relative; width: 100%;">
-                                                            <img src="{{ asset('/image/Default_Card.png') }}"
-                                                                alt="Default Image">
-                                                            <div class="card-content"
-                                                                style="position: absolute; top: 80px; left: 50px; right: auto; color: rgba(0,0,0); text-align: left; font-family: 'Noto Sans JP', sans-serif;">
-                                                                <p style="margin: 0; font-size: 18px;">
-                                                                    {{ $friend->name }}</p>
+                                                        @else
+                                                            <div class="card"
+                                                                style="position: relative; width: 100%;">
+                                                                <img src="{{ asset('/image/Default_Card.png') }}"
+                                                                    alt="Default Image">
+                                                                <div class="card-content"
+                                                                    style="position: absolute; top: 80px; left: 50px; right: auto; color: rgba(0,0,0); text-align: left; font-family: 'Noto Sans JP', sans-serif;">
+                                                                    <p style="margin: 0; font-size: 18px;">
+                                                                        {{ $friend->name }}</p>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    @endif
+                                                        @endif
 
-                                                </div>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
                                         {{-- @endif --}}

@@ -22,6 +22,9 @@ use App\Http\Controllers\FriendController;
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('user.show');
+
+
     Route::resource('friend', FriendController::class);
 
     Route::resource('find', FindController::class);

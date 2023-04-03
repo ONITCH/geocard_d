@@ -23,9 +23,24 @@ class FeedController extends Controller
             ->where('user_id', Auth::id())
             ->orWhereIn('user_id', $followings)
             ->orderBy('updated_at', 'desc')
-            ->get();
+
+            ->paginate(10); // ページネーション
+        // dd($feeds);
         return view('feed.index', compact('feeds'));
     }
+
+    // public function dashboard()
+    // {
+    //     // フォローしているユーザを取得する
+    //     $followings = User::find(Auth::id())->followings->pluck('id')->all();
+    //     // 自分とフォローしている人が投稿したツイートを取得する
+    //     $feeds = Feed::query()
+    //         ->where('user_id', Auth::id())
+    //         ->orWhereIn('user_id', $followings)
+    //         ->orderBy('updated_at', 'desc')
+    //         ->get();
+    //     return view('dashboard', compact('feeds'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -72,7 +87,7 @@ class FeedController extends Controller
             ->where('user_id', Auth::id())
             ->orWhereIn('user_id', $followings)
             ->orderBy('updated_at', 'desc')
-            ->get();
+            ->paginate(10); // ページネーション
         return view('feed.index', compact('feeds'));
     }
 

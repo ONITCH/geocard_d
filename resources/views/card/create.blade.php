@@ -2,8 +2,8 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Card') }}
+        <h2 class="text-white font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('CREATE CARD') }}
         </h2>
     </x-slot>
 
@@ -73,7 +73,7 @@
                             </div>
                             <button type="submit"
                                 class="w-full py-3 mt-6 font-medium tracking-widest text-white bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-                                Create
+                                CREATE
                             </button>
                     </form>
                     {{-- 国選択： --}}

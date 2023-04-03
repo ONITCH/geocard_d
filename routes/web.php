@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/card/index', [App\Http\Controllers\CardController::class, "index"])->name('card.index');
     // Route::get('/', 'CardController@index')->name('card.index');
 
+    // Route::get('/dashboard', [FeedController::class, 'dashboard'])->name('dashboard');
+
     Route::resource('card', CardController::class);
     Route::get('/feed/timeline', [FeedController::class, 'timeline'])->name('feed.timeline');
     //↓フォロワーの情報

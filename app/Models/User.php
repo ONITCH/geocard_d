@@ -73,4 +73,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Card::class);
     }
+
+    public function show(User $user)
+    {
+        $followers = $user->followers;
+        return view('user.show', compact('user', 'followers'));
+    }
 }

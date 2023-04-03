@@ -13,7 +13,15 @@
         @csrf
     </form>
 
-    <img class="rounded-full" src="{{ asset('storage/avatars/' . auth()->user()->avatar) }}" alt="Avatar">
+    <div style="display: flex; justify-content: center; align-items: center;">
+        @if (auth()->user()->avatar)
+            <img style="height: 10rem; width: 10rem; border-radius: 50%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);"
+                src="{{ asset('storage/avatars/' . auth()->user()->avatar) }}" alt="Avatar">
+        @else
+            <img style="height: 10rem; width: 10rem; border-radius: 50%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);"
+                src="{{ asset('image/avatar_default3.png') }}" alt="Default Avatar">
+        @endif
+    </div>
 
     <form action="{{ route('avatar.upload') }}" method="POST" enctype="multipart/form-data">
         @csrf

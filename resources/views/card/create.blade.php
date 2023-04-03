@@ -2,12 +2,12 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Card') }}
+        <h2 class="text-white font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('CREATE CARD') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-6">
         <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -35,11 +35,11 @@
                                         @if ($template)
                                             <div class="card-content" style="{{ $template->CSS1 }}">
                                                 <p style="margin: 0; font-size: 12px;">"タイの王様"</p>
-                                                <p style="margin: 0; font-size: 18px;">RYOHEI ONIZUKA</p>
+                                                <p style="margin: 0; font-size: 18px;">YOUR NAME</p>
                                                 <p style="margin: 0; font-size: 12px;">from FUKUOKA, JAPAN</p>
                                             </div>
                                             <img style="{{ $template->CSS2 }}"
-                                                src="{{ asset('/image/avatar_default2.png') }}" alt="Card Avatar Image">
+                                                src="{{ asset('/image/avatar_default3.png') }}" alt="Card Avatar Image">
                                         @endif
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                             </div>
                             <button type="submit"
                                 class="w-full py-3 mt-6 font-medium tracking-widest text-white bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-                                Create
+                                CREATE
                             </button>
                     </form>
                     {{-- 国選択： --}}

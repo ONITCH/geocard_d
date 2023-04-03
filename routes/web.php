@@ -22,6 +22,9 @@ use App\Http\Controllers\FriendController;
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('user.show');
+
+
     Route::resource('friend', FriendController::class);
 
     Route::resource('find', FindController::class);
@@ -44,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\CardController::class, "index"]);
     Route::get('/card/index', [App\Http\Controllers\CardController::class, "index"])->name('card.index');
     // Route::get('/', 'CardController@index')->name('card.index');
+
+    // Route::get('/dashboard', [FeedController::class, 'dashboard'])->name('dashboard');
 
     Route::resource('card', CardController::class);
     Route::get('/feed/timeline', [FeedController::class, 'timeline'])->name('feed.timeline');

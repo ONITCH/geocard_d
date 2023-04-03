@@ -38,7 +38,16 @@
                     </tr>
                 </thead>
                 @php
-                    $feeds = \App\Models\Feed::getAllOrderByUpdated_at();
+                    // 現在ログインしているユーザーがフォローしているユーザーのIDを取得
+                    $followings = Auth::user()
+                        ->followings()
+                        ->pluck('users.id')
+                        ->push(Auth::id());
+                    
+                    // 取得したIDに基づいてフィードをフィルタリング
+                    $feeds = \App\Models\Feed::whereIn('user_id', $followings)
+                        ->orderByDesc('updated_at')
+                        ->get();
                 @endphp
                 <tbody>
                     @foreach ($feeds->take(5) as $feed)

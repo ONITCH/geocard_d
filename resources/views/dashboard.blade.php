@@ -11,7 +11,7 @@
                 @php
                     $cardId = Auth::user()->card_id;
                     $card = App\Models\Card::where('id', $cardId)
-                        ->with('countries')
+                        // ->with('countries')
                         ->first();
                     $residence = $card ? $card->residence : ''; // $cardオブジェクトがnullでないことを確認し、nullの場合は空の文字列を設定
                     $comments = $card ? $card->comments : '';

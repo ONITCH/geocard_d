@@ -21,7 +21,7 @@ class CardController extends Controller
     public function index()
     {
         $cardId = Auth::user()->card_id;
-        $card = Card::where('id', $cardId)->with('countries')->first();
+        $card = Card::where('id', $cardId)->first();
         $residence = $card ? $card->residence : ''; // $cardオブジェクトがnullでないことを確認し、nullの場合は空の文字列を設定
         $comments = $card ? $card->comments : '';
         $username = Auth::user()->name; // ユーザー名を取得
@@ -99,25 +99,25 @@ class CardController extends Controller
     //     return view('card.countries', ['countries' => $countries]);
     // }
 
-    public function getCountries()
-    {
-        $countries = Country::all();
-        $savedCardId = Auth::user()->card_id;
-        $savedCountries = [];
-        if ($savedCardId) {
-            $savedCard = Card::with('countries')->findOrFail($savedCardId);
-            $savedCountries = $savedCard->countries;
-        }
-        return view('card.countries', compact('countries', 'savedCountries'));
-    }
+    // public function getCountries()
+    // {
+    //     $countries = Country::all();
+    //     $savedCardId = Auth::user()->card_id;
+    //     $savedCountries = [];
+    //     if ($savedCardId) {
+    //         $savedCard = Card::with('countries')->findOrFail($savedCardId);
+    //         $savedCountries = $savedCard->countries;
+    //     }
+    //     return view('card.countries', compact('countries', 'savedCountries'));
+    // }
 
-    public function saveCountries(Request $request)
-    {
-        $cardId = Auth::user()->card_id;
-        $card = Card::findOrFail($cardId);
-        $card->countries()->sync($request->input('countries', []));
-        return redirect()->route('card.countries');
-    }
+    // public function saveCountries(Request $request)
+    // {
+    //     $cardId = Auth::user()->card_id;
+    //     $card = Card::findOrFail($cardId);
+    //     $card->countries()->sync($request->input('countries', []));
+    //     return redirect()->route('card.countries');
+    // }
 
     /**
      * Show the form for editing the specified resource.

@@ -70,12 +70,12 @@
                             <input type="text" id="template_id" name="template_id">
                         </div> --}}
 
-                    <div>
+                    {{-- <div>
                         <label>Countries you've been:</label>
                         @if (isset($card) && isset($card->countries))
-                            @foreach ($card->countries as $country)
-                                {{-- ボタンである必要はない・修正要 --}}
-                                <button type="button" class="country-button"
+                            @foreach ($card->countries as $country) --}}
+                    {{-- ボタンである必要はない・修正要 --}}
+                    {{-- <button type="button" class="country-button"
                                     data-country="{{ $country->id }}">{{ $country->name }}</button>
                             @endforeach
                         @endif
@@ -89,7 +89,7 @@
                         <div>
                             <p>Username: {{ $username }}</p>
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{-- <div>
                             <input type="hidden" id="country_id" name="country_id">

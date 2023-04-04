@@ -12,25 +12,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                            @php
-                                $cardId = Auth::user()->card_id;
-                                $card = App\Models\Card::where('id', $cardId)
-                                    // ->with('countries')
-                                    ->first();
-                                $residence = $card ? $card->residence : ''; // $cardオブジェクトがnullでないことを確認し、nullの場合は空の文字列を設定
-                                $comments = $card ? $card->comments : '';
-                                $username = Auth::user()->name; // ユーザー名を取得
-                            @endphp
-                            {{-- <div class="p-6 text-gray-900 dark:text-gray-100"> --}}
-                            {{-- <div>{{ __('WELCOME! ') }}{{ Auth::user()->name }}</div> --}}
-                            {{-- @include('partials.show') --}}
-
                             <div class="py-6">
-                                {{-- <h3 class="text-xl mb-4">{{ __('Your Friends\' Cards') }}</h3> --}}
-                                {{-- @php
-                                            dd(Auth::user()->followings);
-                                        @endphp
-                                        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"> --}}
                                 @if (Auth::user()->followings)
                                     @foreach (Auth::user()->followings as $friend)
                                         {{-- @if ($friend->card) --}}
@@ -51,10 +33,6 @@
                                                                 {{-- @if ($friend->card->template) --}}
                                                                 <img src="{{ asset('storage/' . $friend->card->template->file_path) }}"
                                                                     style="display: block; max-width: 100%; height: auto; box-shadow: {{ $friend->card->template->box_shadow }};">
-                                                                {{-- @else
-                                                                <img src="{{ asset('/image/Default_Card.png') }}"
-                                                                    alt="Default Image">
-                                                            @endif --}}
                                                                 {{-- CSS1 --}}
                                                                 <div class="card-content"
                                                                     style="{{ $friend->card && $friend->card->template && $friend->card->template->CSS1 ? $friend->card->template->CSS1 : 'position: absolute; top: 80px; left: 50px; right: auto; color: rgba(0,0,0); text-align: left; font-family: \'Noto Sans JP\', sans-serif;' }}">
@@ -103,7 +81,6 @@
                                 {{-- </div> --}}
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

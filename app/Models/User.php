@@ -79,4 +79,17 @@ class User extends Authenticatable
         $followers = $user->followers;
         return view('user.show', compact('user', 'followers'));
     }
+    public function countries()
+    {
+        return $this->belongsToMany(Country::class, 'user_countries');
+    }
+    public function userCountries()
+    {
+        return $this->hasMany(UserCountry::class);
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_id');
+    }
 }

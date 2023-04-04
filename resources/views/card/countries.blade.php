@@ -11,9 +11,8 @@
                 <table class="text-center w-full border-collapse">
                     <thead>
                         <tr>
-                            <th
-                                class="py-4 px-6 bg-grey-lightest font-bold uppercase text-lg text-grey-dark border-b border-grey-light">
-                                MY CARD
+                            <th class="py-4 px-6 bg-grey-lightest  text-grey-dark border-b border-grey-light">
+                                訪れたことのある国を選択してください
                             </th>
                         </tr>
                     </thead>
@@ -21,86 +20,40 @@
                         <tr class="hover:bg-grey-lighter">
                             <td class="py-4 px-6 border-b border-grey-light">
                                 <div class="card">
-                                    {{-- カードが指定されている場合は、編集フォームを表示する --}}
-                                    @if (isset($card))
-                                        <form method="POST" action="{{ route('card.update', $card->id) }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <div>
-                                                <label>Countries you've been:</label>
-                                                <ul>
-                                                    @foreach ($card->countries as $country)
-                                                        <li>{{ $country->name }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <label>Select countries you've been:</label>
-                                                <ul>
-                                                    @foreach ($savedCountries as $country)
-                                                        <li>
-                                                            <input type="checkbox" name="countries[]"
-                                                                value="{{ $country->id }}"
-                                                                {{ $card->countries->contains($country->id) ? 'checked' : '' }}>
-                                                            {{ $country->name }}
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                            <button type="submit">Save</button>
-                                        </form>
-                                    @else
-                                        {{-- カードが指定されていない場合は、全ての国から行ったことのある国を選ぶことができるようにする --}}
-                                        <form method="POST" action="{{ route('card.save-countries') }}">
-                                            @csrf
-                                            <div>
-                                                <label>Select countries you've been:</label>
-                                                <ul>
-                                                    @foreach ($savedCountries as $country)
-                                                        <li>
-                                                            <input type="checkbox" name="countries[]"
-                                                                value="{{ $country->id }}">
-                                                            {{ $country->name }}
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                            <button type="submit">Save</button>
-                                        </form>
-                                    @endif
+
+                                    <form method="POST" action="{{ route('card.save-countries') }}">
+                                        @csrf
+                                        <div class="form-group">
+                                            @foreach ($countries as $country)
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="countries[]"
+                                                        value="{{ $country->id }}" class="form-check-input"
+                                                        @if (in_array($country->id, $userCountryIds)) checked @endif>
+                                                    <label class="form-check-label" for="country_{{ $country->id }}">
+                                                        {{ $country->name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <button type="submit"
+                                            class="w-full py-3 mt-6 font-medium
+                                            tracking-widest text-white bg-black shadow-lg focus:outline-none
+                                            hover:bg-gray-900 hover:shadow-none">SAVE</button>
+                                    </form>
+                                    <div class="mt-4">
+                                        <h2>Selected Countries</h2>
+                                        <ul>
+                                            @foreach ($selectedCountries as $selectedCountry)
+                                                <li>{{ $selectedCountry->country->name }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            </td>
-            </tr>
-            </tbody>
-            </table>
         </div>
     </div>
-    </div>
 </x-app-layout>
-{{-- <script>
-                        const buttons = document.querySelectorAll('.country-button');
-                        const countryIdInput = document.querySelector('#country_id');
-                        const submitButton = document.querySelector('#submit-button');
-
-                        buttons.forEach(button => {
-                            button.addEventListener('click', () => {
-                                // Select the button
-                                buttons.forEach(btn => btn.classList.remove('selected'));
-                                button.classList.add('selected');
-
-                                // Set the country id in the hidden input
-                                countryIdInput.value = button.dataset.country;
-
-                                // Enable the submit button
-                                submitButton.disabled = false;
-                            });
-                        });
-                    </script>
-
-                    <style>
-                        .selected {
-                            background-color: blue;
-                            color: white;
-                        }
-                    </style> --}}

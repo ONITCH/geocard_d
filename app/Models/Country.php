@@ -12,6 +12,7 @@ class Country extends Model
     {
         return $this->belongsToMany(Card::class, 'card_countries');
     }
+
     public function scopeAllCountries($query)
     {
         return $query->orderBy('name', 'asc')->get();

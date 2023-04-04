@@ -1,4 +1,6 @@
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Reggae+One&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@700&family=Kiwi+Maru&family=Noto+Sans+JP&family=Potta+One&family=Reggae+One&amily=Yusei+Magic&display=swap"
+    rel="stylesheet">
 
 <x-app-layout>
     <x-slot name="header">
@@ -34,7 +36,7 @@
                                         @endphp
                                         @if ($template)
                                             <div class="card-content" style="{{ $template->CSS1 }}">
-                                                <p style="margin: 0; font-size: 12px;">"タイの王様"</p>
+                                                <p style="margin: 0; font-size: 12px;">"タイ旅行ならお任せ"</p>
                                                 <p style="margin: 0; font-size: 18px;">YOUR NAME</p>
                                                 <p style="margin: 0; font-size: 12px;">from FUKUOKA, JAPAN</p>
                                             </div>

@@ -17,29 +17,29 @@
                                 <div class="card">
                                 </div>
 
-                                <div class="flex">
+                                <div class="flex mt-4">
                                     <a href="{{ url('card/create') }}"
                                         class="text-sm text-gray-700 dark:text-gray-500 underline">カードを編集</a>
 
                                 </div>
-                                <div class="flex">
+                                <div class="flex mt-4">
                                     <a href="{{ url('profile') }}"
                                         class="text-sm text-gray-700 dark:text-gray-500 underline">プロフィールを編集</a>
 
                                 </div>
 
-                                <div class="flex">
+                                <div class="flex mt-4">
                                     <a href="{{ url('card/countries') }}"
                                         class="text-sm text-gray-700 dark:text-gray-500 underline">行ったことのある国を編集</a>
                                 </div>
 
-                                <div class="flex">
+                                <div class="flex mt-4">
                                     <a href="{{ url('qrcode') }}"
                                         class="text-sm text-gray-700 dark:text-gray-500 underline">MY QRCode</a>
 
                                 </div>
 
-                                <div class="flex">
+                                <div class="flex mt-4">
                                     カメラきどう？
 
                                 </div>

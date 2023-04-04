@@ -21,7 +21,7 @@ class CardController extends Controller
     public function index()
     {
         $cardId = Auth::user()->card_id;
-        $card = Card::where('id', $cardId)->with('countries')->first();
+        $card = Card::where('id', $cardId)->first();
         $residence = $card ? $card->residence : ''; // $cardオブジェクトがnullでないことを確認し、nullの場合は空の文字列を設定
         $comments = $card ? $card->comments : '';
         $username = Auth::user()->name; // ユーザー名を取得
@@ -93,11 +93,31 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    function show()
-    {
-        //アップロードした画像を取得
-        return view('card.edit');
-    }
+    // public function countries()
+    // {
+    //     $countries = Country::all();
+    //     return view('card.countries', ['countries' => $countries]);
+    // }
+
+    // public function getCountries()
+    // {
+    //     $countries = Country::all();
+    //     $savedCardId = Auth::user()->card_id;
+    //     $savedCountries = [];
+    //     if ($savedCardId) {
+    //         $savedCard = Card::with('countries')->findOrFail($savedCardId);
+    //         $savedCountries = $savedCard->countries;
+    //     }
+    //     return view('card.countries', compact('countries', 'savedCountries'));
+    // }
+
+    // public function saveCountries(Request $request)
+    // {
+    //     $cardId = Auth::user()->card_id;
+    //     $card = Card::findOrFail($cardId);
+    //     $card->countries()->sync($request->input('countries', []));
+    //     return redirect()->route('card.countries');
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -107,7 +127,8 @@ class CardController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $card = Card::findOrFail($id);
+        // return view('card.edit', compact('card'));
     }
 
     /**
@@ -119,7 +140,30 @@ class CardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 対象のカードを取得
+        $card = Card::findOrFail($id);
+
+        // 入力値のバリデーション
+        $validated = $request->validate([
+            'comments' => 'required|string',
+            'residence' => 'required|string',
+            'countries' => 'required|array',
+            'countries.*' => 'required|string|exists:countries,name'
+        ]);
+
+        // 入力値の取得
+        $comments = $validated['comments'];
+        $residence = $validated['residence'];
+        $countries = $validated['countries'];
+
+        // カードの更新
+        $card->comments = $comments;
+        $card->residence = $residence;
+        $card->countries()->sync(Country::whereIn('name', $countries)->get());
+
+        $card->save();
+
+        return redirect()->route('card.index');
     }
 
     /**

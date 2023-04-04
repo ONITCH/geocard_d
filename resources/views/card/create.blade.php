@@ -76,71 +76,9 @@
                                 CREATE
                             </button>
                     </form>
-                    {{-- 国選択： --}}
-                    <form method="POST" action="{{ route('card.store') }}">
-                        @csrf
-                        <div>
-                            <label>Country:</label>
-                            @foreach ($countries as $country)
-                                <button type="button" class="country-button"
-                                    data-country="{{ $country->id }}">{{ $country->name }}</button>
-                            @endforeach
-                        </div>
-                        <div>
-                            <input type="hidden" id="country_id" name="country_id">
-                            <button type="submit" id="submit-button" disabled>Submit</button>
-                        </div>
-                    </form>
-                    {{-- 国選択： --}}
                 </div>
             </div>
         </div>
     </div>
 
 </x-app-layout>
-<style>
-    .selected {
-        background-color: blue;
-        color: white;
-    }
-</style>
-
-<script>
-    // モーダルウィンドウ
-    $('.modal-open').click(function() {
-        var id = $(this).data('id');
-        $('#modal-card-' + id).fadeIn();
-    });
-
-    $('.modal-close').click(function() {
-        $('.modal').fadeOut();
-    });
-
-    // 国選択
-    $('.country-button').click(function() {
-        var countryId = $(this).data('country');
-        $('#country_id').val(countryId);
-        $('#submit-button').prop('disabled', false);
-    });
-
-    // スクロールボタン
-    $(function() {
-        var topBtn = $('#scroll');
-        topBtn.hide();
-        //スクロールが100に達したらボタン表示
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 100) {
-                topBtn.fadeIn();
-            } else {
-                topBtn.fadeOut();
-            }
-        });
-        //スクロールしてトップ
-        topBtn.click(function() {
-            $('body,html').animate({
-                scrollTop: 0
-            }, 500);
-            return false;
-        });
-    });
-</script>

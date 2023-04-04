@@ -40,12 +40,16 @@
                                     src="{{ asset('storage/' . $user->card->file_path) }}" alt="Card Avatar Image">
                             @endif
                         </div>
-                        {{-- <div class="flex flex-col mb-4">
-                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Name</p>
-                            <p class="py-2 px-3 text-grey-darkest" id="name">
-                                {{ $user->name }}
-                            </p>
-                        </div> --}}
+
+                        <div class="flex flex-col mb-4">
+                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">訪れた国</p>
+                            <ul class="py-2 px-3 text-grey-darkest" id="visited">
+                                @foreach ($user->userCountries as $userCountry)
+                                    <li>{{ $userCountry->country->name }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
                         <div class="flex flex-col mb-4">
                             <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Joined_at</p>
                             <p class="py-2 px-3 text-grey-darkest" id="created_at">
@@ -53,27 +57,24 @@
                             </p>
                         </div>
 
-
-
-
                         <div class="flex flex-col mb-4">
                             <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">{{ $followers->count() }}
                                 Followers</p>
-                            @foreach ($followers as $follower)
+                            {{-- @foreach ($followers as $follower)
                                 <p class="py-2 px-3 text-grey-darkest" id="followers{{ $loop->index }}">
                                     {{ $follower->name }}
                                 </p>
-                            @endforeach
+                            @endforeach --}}
                         </div>
 
                         <div class="flex flex-col mb-4">
                             <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">{{ $followings->count() }}
                                 Following</p>
-                            @foreach ($followings as $following)
+                            {{-- @foreach ($followings as $following)
                                 <p class="py-2 px-3 text-grey-darkest" id="followings{{ $loop->index }}">
                                     {{ $following->name }}
                                 </p>
-                            @endforeach
+                            @endforeach --}}
                         </div>
 
                         <a href="{{ url()->previous() }}"

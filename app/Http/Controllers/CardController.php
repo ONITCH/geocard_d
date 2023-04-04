@@ -9,6 +9,7 @@ use App\Models\Card;
 use App\Models\UploadImage;
 use App\Models\Template;
 use App\Models\Country;
+use App\Models\UserCountry;
 use Str;
 
 class CardController extends Controller
@@ -93,31 +94,43 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function countries()
-    // {
-    //     $countries = Country::all();
-    //     return view('card.countries', ['countries' => $countries]);
-    // }
 
-    // public function getCountries()
-    // {
-    //     $countries = Country::all();
-    //     $savedCardId = Auth::user()->card_id;
-    //     $savedCountries = [];
-    //     if ($savedCardId) {
-    //         $savedCard = Card::with('countries')->findOrFail($savedCardId);
-    //         $savedCountries = $savedCard->countries;
-    //     }
-    //     return view('card.countries', compact('countries', 'savedCountries'));
-    // }
 
-    // public function saveCountries(Request $request)
-    // {
-    //     $cardId = Auth::user()->card_id;
-    //     $card = Card::findOrFail($cardId);
-    //     $card->countries()->sync($request->input('countries', []));
-    //     return redirect()->route('card.countries');
-    // }
+
+    public function getCountries()
+    {
+        $countries = Country::allCountries();
+        $selectedCountries = UserCountry::selectedCountries(auth()->id());
+        $userCountryIds = auth()->user()->userCountries()->pluck('country_id')->toArray();
+        return view('card.countries', compact('countries', 'selectedCountries', 'userCountryIds'));
+    }
+
+    public function saveCountries(Request $request)
+    {
+        $user = auth()->user();
+        $userCountryIds = $user->userCountries()->pluck('country_id')->toArray();
+
+        // フォームから送信された国のIDリストを取得
+        $selectedCountryIds = $request->input('countries', []);
+
+        // 削除する国のIDリストを作成
+        $deletedCountryIds = array_diff($userCountryIds, $selectedCountryIds);
+
+        // 削除する国のレコードを取得して削除
+        $user->userCountries()->whereIn('country_id', $deletedCountryIds)->delete();
+
+        // 選択された国のIDリストから、既に保存されている国のIDを除外
+        $newCountryIds = array_diff($selectedCountryIds, $userCountryIds);
+
+        // 選択された国のIDをループして、まだ保存されていない場合はレコードを作成
+        foreach ($newCountryIds as $countryId) {
+            $user->userCountries()->create(['country_id' => $countryId]);
+        }
+
+        return back()->with('success', 'Countries saved successfully');
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.

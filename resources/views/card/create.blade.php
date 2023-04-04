@@ -96,42 +96,51 @@
             </div>
         </div>
     </div>
-    <script>
-        const buttons = document.querySelectorAll('.country-button');
-        const countryIdInput = document.querySelector('#country_id');
-        const submitButton = document.querySelector('#submit-button');
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Select the button
-                buttons.forEach(btn => btn.classList.remove('selected'));
-                button.classList.add('selected');
-
-                // Set the country id in the hidden input
-                countryIdInput.value = button.dataset.country;
-
-                // Enable the submit button
-                submitButton.disabled = false;
-            });
-        });
-
-        // Add a click event listener to a new button that selects all buttons
-        const selectAllButton = document.createElement('button');
-        selectAllButton.textContent = 'Select All';
-        selectAllButton.addEventListener('click', () => {
-            buttons.forEach(button => {
-                button.classList.add('selected');
-                countryIdInput.value = button.dataset.country;
-            });
-            submitButton.disabled = false;
-        });
-        document.querySelector('form').prepend(selectAllButton);
-    </script>
-
-    <style>
-        .selected {
-            background-color: blue;
-            color: white;
-        }
-    </style>
 </x-app-layout>
+<style>
+    .selected {
+        background-color: blue;
+        color: white;
+    }
+</style>
+
+<script>
+    // モーダルウィンドウ
+    $('.modal-open').click(function() {
+        var id = $(this).data('id');
+        $('#modal-card-' + id).fadeIn();
+    });
+
+    $('.modal-close').click(function() {
+        $('.modal').fadeOut();
+    });
+
+    // 国選択
+    $('.country-button').click(function() {
+        var countryId = $(this).data('country');
+        $('#country_id').val(countryId);
+        $('#submit-button').prop('disabled', false);
+    });
+
+    // スクロールボタン
+    $(function() {
+        var topBtn = $('#scroll');
+        topBtn.hide();
+        //スクロールが100に達したらボタン表示
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                topBtn.fadeIn();
+            } else {
+                topBtn.fadeOut();
+            }
+        });
+        //スクロールしてトップ
+        topBtn.click(function() {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 500);
+            return false;
+        });
+    });
+</script>

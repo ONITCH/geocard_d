@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
-    // use HasFactory;
+    protected $table = 'countries';
+    public function cards()
+    {
+        return $this->belongsToMany(Card::class, 'card_countries');
+    }
+    public function scopeAllCountries($query)
+    {
+        return $query->orderBy('name', 'asc')->get();
+    }
 }

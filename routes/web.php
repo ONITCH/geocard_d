@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('friend', FriendController::class);
 
     Route::resource('find', FindController::class);
-
+    Route::post('/find', [App\Http\Controllers\FindController::class, 'search'])->name('find.search');
 
     // Route::post('/card/{id}', [CardController::class, 'store'])->name('card.store');
     // Route::get('/card/countries', [CardController::class, 'getCountries'])->name('card.countries');

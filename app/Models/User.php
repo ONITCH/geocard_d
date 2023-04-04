@@ -87,4 +87,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserCountry::class);
     }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_id');
+    }
 }

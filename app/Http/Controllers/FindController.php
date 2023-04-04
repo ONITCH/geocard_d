@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use App\Models\UserCountry;
 
 class FindController extends Controller
 {
@@ -14,7 +15,28 @@ class FindController extends Controller
      */
     public function index()
     {
-        return view('find.index');
+        $users = [];
+        return view('find.index', compact('users'));
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('find');
+        $countryIds = UserCountry::whereHas('country', function ($query) use ($searchTerm) {
+            $query->where('name', 'like', '%' . $searchTerm . '%');
+        })->pluck('country_id')->toArray();
+
+        $followedUserIds = auth()->user()->following()->pluck('users.id')->toArray();
+
+        $userIds = User::whereIn('id', $followedUserIds)
+            ->whereHas('userCountries', function ($query) use ($countryIds) {
+                $query->whereIn('country_id', $countryIds);
+            })
+            ->pluck('id')->toArray();
+
+        $users = User::whereIn('id', $userIds)->get();
+
+        return view('find.index', compact('users'));
     }
 
     /**

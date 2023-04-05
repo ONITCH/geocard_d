@@ -44,8 +44,10 @@
                         <div class="flex flex-col mb-4">
                             <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">訪れた国</p>
                             <ul class="py-2 px-3 text-grey-darkest" id="visited">
-                                @foreach ($user->userCountries as $userCountry)
-                                    <li>{{ $userCountry->country->name }}</li>
+                                @foreach ($user->userCountries->sortBy('country_id') as $userCountry)
+                                    <li
+                                        style="font-size: 0.5em;display: inline-block;margin: 0 .1em .6em 0;padding: .6em; line-height: 1;text-decoration: none; color: #0000ee;background-color: #fff; border: 1px solid #0000ee; border-radius: 2em;">
+                                        {{ $userCountry->country->name }}</li>
                                 @endforeach
                             </ul>
                         </div>

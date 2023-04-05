@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
+        <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12" style="margin-bottom: 80px;">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <table class="text-center w-full border-collapse">
                     <thead>
@@ -24,8 +24,10 @@
                                     <form method="POST" action="{{ route('card.save-countries') }}">
                                         @csrf
                                         <div class="form-group">
-                                            @foreach ($countries as $country)
-                                                <div class="form-check">
+                                            <p>アジア</p>
+                                            @foreach ($countries->whereBetween('id', [1, 24])->sortBy('id') as $country)
+                                                <div class="form-check"
+                                                    style="font-size: 0.8em;display: inline-block; margin-right: 10px;">
                                                     <input type="checkbox" name="countries[]"
                                                         value="{{ $country->id }}" class="form-check-input"
                                                         @if (in_array($country->id, $userCountryIds)) checked @endif>
@@ -34,6 +36,67 @@
                                                     </label>
                                                 </div>
                                             @endforeach
+                                            <p style="margin-top:30px;">オセアニア</p>
+                                            @foreach ($countries->whereBetween('id', [25, 40])->sortBy('id') as $country)
+                                                <div class="form-check"
+                                                    style="font-size: 0.8em;display: inline-block; margin-right: 10px;">
+                                                    <input type="checkbox" name="countries[]"
+                                                        value="{{ $country->id }}" class="form-check-input"
+                                                        @if (in_array($country->id, $userCountryIds)) checked @endif>
+                                                    <label class="form-check-label" for="country_{{ $country->id }}">
+                                                        {{ $country->name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                            <p style="margin-top:30px;">北米・南米</p>
+                                            @foreach ($countries->whereBetween('id', [41, 74])->sortBy('id') as $country)
+                                                <div class="form-check"
+                                                    style="font-size: 0.8em;display: inline-block; margin-right: 10px;">
+                                                    <input type="checkbox" name="countries[]"
+                                                        value="{{ $country->id }}" class="form-check-input"
+                                                        @if (in_array($country->id, $userCountryIds)) checked @endif>
+                                                    <label class="form-check-label" for="country_{{ $country->id }}">
+                                                        {{ $country->name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                            <p style="margin-top:30px;">ヨーロッパ</p>
+                                            @foreach ($countries->whereBetween('id', [75, 128])->sortBy('id') as $country)
+                                                <div class="form-check"
+                                                    style="font-size: 0.8em;display: inline-block; margin-right: 10px;">
+                                                    <input type="checkbox" name="countries[]"
+                                                        value="{{ $country->id }}" class="form-check-input"
+                                                        @if (in_array($country->id, $userCountryIds)) checked @endif>
+                                                    <label class="form-check-label" for="country_{{ $country->id }}">
+                                                        {{ $country->name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                            <p style="margin-top:30px;">中東</p>
+                                            @foreach ($countries->whereBetween('id', [129, 144])->sortBy('id') as $country)
+                                                <div class="form-check"
+                                                    style="font-size: 0.8em;display: inline-block; margin-right: 10px;">
+                                                    <input type="checkbox" name="countries[]"
+                                                        value="{{ $country->id }}" class="form-check-input"
+                                                        @if (in_array($country->id, $userCountryIds)) checked @endif>
+                                                    <label class="form-check-label" for="country_{{ $country->id }}">
+                                                        {{ $country->name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                            <p style="margin-top:30px;">アフリカ</p>
+                                            @foreach ($countries->whereBetween('id', [145, 198])->sortBy('id') as $country)
+                                                <div class="form-check"
+                                                    style="font-size: 0.8em;display: inline-block; margin-right: 10px;">
+                                                    <input type="checkbox" name="countries[]"
+                                                        value="{{ $country->id }}" class="form-check-input"
+                                                        @if (in_array($country->id, $userCountryIds)) checked @endif>
+                                                    <label class="form-check-label" for="country_{{ $country->id }}">
+                                                        {{ $country->name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+
                                         </div>
                                         <button type="submit"
                                             class="w-full py-3 mt-6 font-medium
@@ -43,8 +106,11 @@
                                     <div class="mt-4">
                                         <h2>Selected Countries</h2>
                                         <ul>
-                                            @foreach ($selectedCountries as $selectedCountry)
-                                                <li>{{ $selectedCountry->country->name }}</li>
+                                            @foreach ($selectedCountries->sortBy('country_id') as $selectedCountry)
+                                                <li
+                                                    style="font-size: 0.5em;display: inline-block;margin: 0 .1em .6em 0;padding: .6em; line-height: 1;text-decoration: none; color: #0000ee;background-color: #fff; border: 1px solid #0000ee; border-radius: 2em;">
+                                                    {{ $selectedCountry->country->name }}
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </div>

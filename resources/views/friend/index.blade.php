@@ -2,11 +2,12 @@
     href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@700&family=Kiwi+Maru&family=Noto+Sans+JP&family=Potta+One&family=Reggae+One&amily=Yusei+Magic&display=swap"
     rel="stylesheet">
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('FRIENDS') }}
-        </h2>
-    </x-slot>
+    <div style="position: relative; margin-top: 65px;">
+        <img src="/image/title7.png" style="width: 100%;">
+        <div style="position: absolute; top: 50%; left: 70px; transform: translate(-50%, -50%);">
+            <h2 style="font-size: 1em; color: rgb(0, 0, 0); font-family: Noto+Sans+JP;">TRAVELERS</h2>
+        </div>
+    </div>
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="margin-bottom: 80px;">

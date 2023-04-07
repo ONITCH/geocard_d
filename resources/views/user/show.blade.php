@@ -1,5 +1,7 @@
 <!-- resources/views/user/show.blade.php -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Reggae+One&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@700&family=Kiwi+Maru&family=Noto+Sans+JP&family=Potta+One&family=Reggae+One&amily=Yusei+Magic&display=swap"
+    rel="stylesheet">
 
 
 <x-app-layout>
@@ -14,7 +16,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="mb-6">
-                        <div class="card" style="position: relative; width: 100%;">
+                        <div class="card" style="position: relative; width: 100%; margin-bottom:30px">
                             @if ($user->card && $user->card->template)
                                 <img src="{{ asset('storage/' . $user->card->template->file_path) }}"
                                     style="display: block; max-width: 100%; height: auto; box-shadow: {{ $user->card->template->box_shadow }};">

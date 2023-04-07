@@ -1,5 +1,5 @@
-<nav x-data="{ open: false }"
-    class="sticky bottom-0 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="sticky bottom-0 bg-white dark:bg-gray-800 dark:border-gray-700"
+    style="background-color: #ffffff;">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -7,28 +7,30 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <img src="{{ asset('/image/logo7.svg') }}" style="height:35px;">
+                        {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" /> --}}
                     </a>
+
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                </div>
-                <!-- 🔽 一覧ページへのリンクを追加 -->
+                </div> --}}
+                {{-- <!-- 🔽 一覧ページへのリンクを追加 -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('feed.index')" :active="request()->routeIs('feed.index')">
                         {{ __('Feed') }}
                     </x-nav-link>
-                </div>
+                </div> --}}
                 <!-- 🔽 QR CODEページへのリンクを追加 -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('qrcode.index')" :active="request()->routeIs('qrcode.index')">
                         {{ __('QR CODE') }}
                     </x-nav-link>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Settings Dropdown -->
@@ -87,17 +89,17 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+        {{-- <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-        </div>
-        <!-- 🔽 一覧ページへのリンクを追加 -->
+        </div> --}}
+        {{-- <!-- 🔽 一覧ページへのリンクを追加 -->
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('feed.index')" :active="request()->routeIs('feed.index')">
                 {{ __('Feed') }}
             </x-responsive-nav-link>
-        </div>
+        </div> --}}
         <!-- 🔽 QRCODEページへのリンクを追加 -->
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('qrcode.index')" :active="request()->routeIs('qrcode.index')">

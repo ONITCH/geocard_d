@@ -42,31 +42,31 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        <div class="navbar-top">
-            @include('layouts.navigation')
-        </div>
-        <!-- Page Heading -->
-        @if (isset($header))
-            <header class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endif
-
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
-
-        <div class="bg-white pt-12 sm:pt-16 lg:pt-24 w-screen">
-            <!-- nav - start -->
-            <div class="navbar-bottom">
-                @include('layouts.navbar')
+    {{-- <div class="min-h-screen" style="background-color: #dddddd;"> --}}
+    <div class="navbar-top">
+        @include('layouts.navigation')
+    </div>
+    <!-- Page Heading -->
+    @if (isset($header))
+        <header class="bg-white dark:bg-gray-800 shadow" style="background-color: #dddddd;">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
             </div>
-            <!-- nav - end -->
+        </header>
+    @endif
+
+    <!-- Page Content -->
+    <main>
+        {{ $slot }}
+    </main>
+
+    <div class="bg-white pt-12 sm:pt-16 lg:pt-24 w-screen">
+        <!-- nav - start -->
+        <div class="navbar-bottom">
+            @include('layouts.navbar')
         </div>
+        <!-- nav - end -->
+    </div>
 
     </div>
 </body>

@@ -21,11 +21,12 @@
     }
 </style>
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('FEED') }}
-        </h2>
-    </x-slot>
+    <div style="position: relative; margin-top: 65px;">
+        <img src="{{ asset('image/title2.png') }}" style="width: 100%;">
+        <div style="position: absolute; top: 50%; left: 70px; transform: translate(-50%, -50%);">
+            <h2 style="font-size: 1em; color: rgb(0, 0, 0); font-family: Noto+Sans+JP;">FEED</h2>
+        </div>
+    </div>
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">

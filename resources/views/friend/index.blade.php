@@ -2,18 +2,20 @@
     href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@700&family=Kiwi+Maru&family=Noto+Sans+JP&family=Potta+One&family=Reggae+One&amily=Yusei+Magic&display=swap"
     rel="stylesheet">
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('FRIENDS') }}
-        </h2>
-    </x-slot>
+    <div style="position: relative; margin-top: 65px;">
+        <img src="{{ asset('/image/title7.png') }}" style="width: 100%;">
+        <div style="position: absolute; top: 50%; left: 70px; transform: translate(-50%, -50%);">
+            <h2 style="font-size: 1em; color: rgb(0, 0, 0); font-family: Noto+Sans+JP;">FRIENDS</h2>
+        </div>
+    </div>
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="margin-bottom: 80px;">
-            <div class="py-6 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="py-6 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"
+                style="background-color:white;">
                 {{-- <div class="p-6 text-gray-900 dark:text-gray-100"> --}}
-                <div class="  max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-center">
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="flex justify-center">
+                    <div class="bg-white dark:bg-gray-800:rounded-lg">
                         {{-- <div class="py-6"> --}}
                         @if (Auth::user()->followings)
                             @foreach (Auth::user()->followings as $friend)
@@ -24,8 +26,8 @@
                                     $comments = $card ? $card->comments : '';
                                     $username = $friend->name;
                                 @endphp
-                                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                                    <div class="p-2">
+                                <div class="p-2 dark:bg-gray-800 overflow-hidden"style="background-color:white;">
+                                    <div>
                                         <a href="{{ route('user.show', ['user' => $friend->id]) }}">
                                             <div class="card"
                                                 style="position: relative; width: 100%; margin-bottom:10px">
@@ -59,7 +61,8 @@
                                                         @endif
                                                     </div>
                                                 @else
-                                                    <div class="card" style="position: relative; width: 100%;">
+                                                    <div class="card"
+                                                        style="position: relative; width: 100%; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.3)">
                                                         <img src="{{ asset('/image/Default_Card.png') }}"
                                                             alt="Default Image">
                                                         <div class="card-content"

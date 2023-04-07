@@ -1,11 +1,11 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Profile Information') }}
+        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100" style="color:black;">
+            {{ __('▶︎プロフィール画像の変更') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __('　画像はFEED画面に表示されます') }}
         </p>
     </header>
 
@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <div style="display: flex; justify-content: center; align-items: center;">
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px; margin-bottom: 20px">
         @if (auth()->user()->avatar)
             <img style="height: 10rem; width: 10rem; border-radius: 50%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);"
                 src="{{ asset('storage/avatars/' . auth()->user()->avatar) }}" alt="Avatar">
@@ -26,10 +26,30 @@
     <form action="{{ route('avatar.upload') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="avatar">
-        <x-primary-button class="mt-2">Upload Avatar</x-primary-button>
+        <x-primary-button class="mt-2">SAVE</x-primary-button>
     </form>
 
+    <header>
+        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100" style="color:black;">
+            {{ __('▶︎連絡先情報を登録') }}
+        </h2>
 
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            {{ __('　FRIENDS画面で個人ページに表示されます') }}
+        </p>
+    </header>
+
+
+    <header>
+        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100" style="color:black;">
+            {{ __('▶︎名前の編集') }}
+        </h2>
+
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            {{ __('　GEOCARDに表示されます。名前を覚えてもらう') }}<br>
+            {{ __('　ためにもフルネームで表示しましょう') }}
+        </p>
+    </header>
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
@@ -37,15 +57,15 @@
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"
-                required autofocus autocomplete="name" />
+            <x-text-input style="background-color:white; color:black;" id="name" name="name" type="text"
+                class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)"
-                required autocomplete="username" />
+            <x-text-input style="background-color:white; color:black;" id="email" name="email" type="email"
+                class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())

@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="py-6">
+    <div class="py-6" style="margin-bottom:50px;">
         <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
             <div class="bg-white overflow-hidden  sm:rounded-lg">
                 {{-- <div class="p-6 bg-white border-b border-gray-200"> --}}

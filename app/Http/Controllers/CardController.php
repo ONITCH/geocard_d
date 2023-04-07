@@ -84,7 +84,7 @@ class CardController extends Controller
             }
         }
 
-        return redirect("/card/create");
+        return redirect("/card");
     }
 
 

@@ -4,7 +4,7 @@
 <x-app-layout>
     {{-- <x-slot name="header"></x-slot> --}}
     <div style="position: relative; margin-top: 65px;">
-        <img src="image/title5.png" style="width: 100%;">
+        <img src="{{ asset('image/title5.png') }}" style="width: 100%;">
         <div style="position: absolute; top: 50%; left: 70px; transform: translate(-50%, -50%);">
             <h2 style="font-size: 1em; color: rgb(0, 0, 0); font-family: Noto+Sans+JP;">GEOCARD</h2>
         </div>

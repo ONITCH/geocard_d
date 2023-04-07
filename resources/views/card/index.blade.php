@@ -1,6 +1,6 @@
 <x-app-layout>
     <div style="position: relative; margin-top: 65px;">
-        <img src="/image/title6.png" style="width: 100%;">
+        <img src="{{ asset('image/title6.png') }}" style="width: 100%;">
         <div style="position: absolute; top: 50%; left: 70px; transform: translate(-50%, -50%);">
             <h2 style="font-size: 1em; color: rgb(0, 0, 0); font-family: Noto+Sans+JP;">MY CARD</h2>
         </div>

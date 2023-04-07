@@ -1,5 +1,5 @@
 <nav class="mx-auto flex w-full justify-between gap-8 border-t border-gray-800 bg-black px-10 py-4 text-xs sm:max-w-md sm:rounded-t-xl sm:border-transparent sm:text-sm sm:shadow-2xl"
-    style="height: 80px ;background-color: rgb(0, 0, 0)">
+    style="height: 75px ;background-color: rgb(0, 0, 0)">
     <span>&nbsp;</span>
     <a href="{{ route('dashboard') }}"
         class="flex flex-col items-center gap-1 text-gray-400 transition duration-100 hover:text-gray-500 {{ request()->routeIs('dashboard') ? 'active text-gray-600' : '' }}">

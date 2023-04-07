@@ -7,7 +7,7 @@
     <div style="position: relative; margin-top: 65px;">
         <img src="{{ asset('image/title1.png') }}" style="width: 100%;">
         <div style="position: absolute; top: 50%; left: 70px; transform: translate(-50%, -50%);">
-            <h2 style="font-size: 1em; color: rgb(0, 0, 0); font-family: Noto+Sans+JP;">FIND</h2>
+            <h2 style="font-size: 1em; color: rgb(0, 0, 0); font-family: Noto+Sans+JP;">SEARCH</h2>
         </div>
     </div>
 

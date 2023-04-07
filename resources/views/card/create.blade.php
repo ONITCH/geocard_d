@@ -3,11 +3,12 @@
     rel="stylesheet">
 
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-white font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('CREATE CARD') }}
-        </h2>
-    </x-slot>
+    <div style="position: relative; margin-top: 65px;">
+        <img src="{{ asset('/image/title4.png') }}" style="width: 100%;">
+        <div style="position: absolute; top: 50%; left: 70px; transform: translate(-50%, -50%);">
+            <h2 style="font-size: 1em; color: rgb(0, 0, 0); font-family: Noto+Sans+JP;">CREATE CARD</h2>
+        </div>
+    </div>
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
@@ -15,7 +16,8 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h3 class="text-left font-bold text-lg text-grey-dark"> MY CARD CREATE</h3>
                     @include('common.errors')
-                    <form class="mb-6" action="{{ route('card.store') }}" method="POST" enctype="multipart/form-data">
+                    <form class="mb-6" action="{{ route('card.store') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="flex flex-col mb-4">
                             @foreach ($images as $image)

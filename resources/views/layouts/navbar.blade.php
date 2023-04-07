@@ -1,5 +1,6 @@
-<nav class="mx-auto flex w-full justify-between gap-8 border-t border-gray-800 bg-black px-10 py-4 text-xs sm:max-w-md sm:rounded-t-xl sm:border-transparent sm:text-sm sm:shadow-2xl"
-    style="height: 75px ;background-color: rgb(0, 0, 0)">
+<nav class="mx-auto flex w-full justify-between gap-8 border-t border-gray-800 bg-black px-10 py-4 text-xs sm:max-w-md sm:rounded-t-xl sm:border-transparent sm:text-sm
+    style="height:
+    75px ;background-color: rgb(0, 0, 0)">
     <span>&nbsp;</span>
     <a href="{{ route('dashboard') }}"
         class="flex flex-col items-center gap-1 text-gray-400 transition duration-100 hover:text-gray-500 {{ request()->routeIs('dashboard') ? 'active text-gray-600' : '' }}">
@@ -20,7 +21,7 @@
     {{-- <span>QR Code</span> --}}
 
 
-    <a href="{{ route('find.index') }}"
+    <a href="{{ route('find.index') }}" style="margin-right: 2px; margin-left: 2px;"
         class="flex flex-col items-center gap-1 text-gray-400 transition duration-100 hover:text-gray-500 {{ request()->routeIs('find.index') ? 'active text-gray-600' : '' }}">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-6 w-6">
             <g>
@@ -42,7 +43,7 @@
                     style="fill: rgb(120, 120, 120);"></path>
             </g>
         </svg>
-        <span>{{ __('find') }}</span>
+        <span>{{ __('search') }}</span>
     </a>
 
 

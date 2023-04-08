@@ -129,13 +129,12 @@
                                 style="font-size:14px;">▶︎次の目的地を書き込む</label>
 
                             <div class="flex" style="margin-bottom:10px;">
-                                <input class="flex-basis-50 border py-1 px-1 text-grey-darkest" type="date"
-                                    name="date1" id="date1" style="font-size:14px;">
+                                <input class="border py-1 px-1 text-grey-darkest" type="date" name="date1"
+                                    id="date1" style="font-size:14px; width: 120px;">
                                 <p class="mx-2 flex items-center justify-center"style="font-size:14px;">から</p>
-                                <input
-                                    class="flex-basis-50
+                                <input class="
                                     border py-1 px-1 text-grey-darkest"
-                                    type="date" name="date2" id="date2" style="font-size:14px;">
+                                    type="date" name="date2" id="date2" style="font-size:14px; width: 120px;">
                             </div>
                             <div class="flex">
                                 <input class="flex-1 border py-1 px-3 text-grey-darkest" type="text" name="feed"

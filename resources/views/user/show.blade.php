@@ -56,9 +56,63 @@
                         </div>
 
                         <div class="flex flex-col mb-4">
-                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Joined_at</p>
+                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">連絡先</p>
+                            <div>
+                                @if ($user->contact1)
+                                    <p class="py-2 px-3 text-grey-darkest mr-2">
+                                        @if ($user->contact1_type === 'twitter')
+                                            <a href="https://twitter.com/{{ $user->contact1 }}" target="_blank">
+                                                <img src="{{ asset('image/twitter.png') }}" alt="twitter"
+                                                    width="40" height="40">
+                                            </a>
+                                        @elseif ($user->contact1_type === 'instagram')
+                                            <a href="https://www.instagram.com/{{ $user->contact1 }}" target="_blank">
+                                                <img src="{{ asset('image/insta.png') }}" alt="instagram"
+                                                    width="40" height="40">
+                                            </a>
+                                        @else
+                                            <img src="{{ asset('image/other.png') }}" alt="other" width="40"
+                                                height="40" class="flex mr-2">
+                                            <p>{{ $user->contact1 }}</p>
+                                        @endif
+                                    </p>
+                                @endif
+                                @if ($user->contact2)
+                                    <p class="py-2 px-3 text-grey-darkest mr-2">
+                                        @if ($user->contact2_type === 'twitter')
+                                            <a href="https://twitter.com/{{ $user->contact2 }}" target="_blank">
+                                                <img src="{{ asset('image/twitter.png') }}" alt="twitter"
+                                                    width="40" height="40">
+                                            </a>
+                                        @elseif ($user->contact2_type === 'instagram')
+                                            <a href="https://www.instagram.com/{{ $user->contact2 }}" target="_blank">
+                                                <img src="{{ asset('image/insta.png') }}" alt="instagram"
+                                                    width="40" height="40">
+                                            </a>
+                                        @else
+                                            <img src="{{ asset('image/other.png') }}" alt="other" width="40"
+                                                height="40" class="flex mr-2">
+                                            <p>{{ $user->contact2 }}</p>
+                                        @endif
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col mb-4">
+                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Friends since</p>
+                            @if ($user->followings->contains($user))
+                                <p class="py-2 px-3 text-grey-darkest">
+                                    {{ $user->followings->find($user->id)->pivot->created_at->format('Y/m/d') }}
+                                </p>
+                            @endif
+                        </div>
+
+
+                        <div class="flex flex-col mb-4">
+                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Joined at</p>
                             <p class="py-2 px-3 text-grey-darkest" id="created_at">
-                                {{ $user->created_at }}
+                                {{ $user->created_at->format('Y/m/d') }}
                             </p>
                         </div>
 

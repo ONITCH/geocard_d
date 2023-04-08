@@ -9,8 +9,17 @@
             <h2 style="font-size: 1em; color: rgb(0, 0, 0); font-family: Noto+Sans+JP;">GEOCARD</h2>
         </div>
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <div class="py-6">
+
+        @if (session('followed_user'))
+            <div style="display: flex; justify-content: center;">
+                <div style="background-color: rgb(246, 215, 89); padding: 5px 10px; border-radius: 20px;">
+                    <p style="font-size: 12px; margin: 0;">{{ session('followed_user') }}さんのGEOCARDを入手しました！</p>
+                </div>
+            </div>
+        @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg ">
                 @php
@@ -29,6 +38,8 @@
             </div>
         </div>
     </div>
+
+
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200" style="margin-bottom: 100px;">
             <table class="text-center w-full border-collapse">

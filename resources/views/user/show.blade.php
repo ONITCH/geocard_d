@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class="py-6">
+    <div class="py-6" style="margin-bottom:70px">
         <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="flex flex-col mb-4">
-                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">訪れた国</p>
+                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">▶︎ 訪れた国</p>
                             <ul class="py-2 px-3 text-grey-darkest" id="visited">
                                 @foreach ($user->userCountries->sortBy('country_id') as $userCountry)
                                     <li
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="flex flex-col mb-4">
-                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">連絡先</p>
+                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">▶︎ 連絡先</p>
                             <div>
                                 @if ($user->contact1)
                                     <p class="py-2 px-3 text-grey-darkest mr-2">
@@ -99,50 +99,51 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-col mb-4">
+                        {{-- フォローした日を取得したかった --}}
+                        {{-- <div class="flex flex-col mb-4">
                             <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Friends since</p>
-                            @if ($user->followings->contains($user))
+                            @if ($users[0]->followings->contains($user))
                                 <p class="py-2 px-3 text-grey-darkest">
-                                    {{ $user->followings->find($user->id)->pivot->created_at->format('Y/m/d') }}
+                                    {{ $users[0]->followings->find($user->id)->pivot->created_at->format('Y/m/d') }}
                                 </p>
                             @endif
-                        </div>
+                        </div> --}}
 
 
                         <div class="flex flex-col mb-4">
-                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Joined at</p>
+                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">▶︎ Joined at</p>
                             <p class="py-2 px-3 text-grey-darkest" id="created_at">
                                 {{ $user->created_at->format('Y/m/d') }}
                             </p>
                         </div>
 
-                        <div class="flex flex-col mb-4">
+                        {{-- <div class="flex flex-col mb-4">
                             <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">{{ $followers->count() }}
-                                Followers</p>
-                            {{-- @foreach ($followers as $follower)
+                                Followers</p> --}}
+                        {{-- @foreach ($followers as $follower)
                                 <p class="py-2 px-3 text-grey-darkest" id="followers{{ $loop->index }}">
                                     {{ $follower->name }}
                                 </p>
                             @endforeach --}}
-                        </div>
+                    </div>
 
-                        <div class="flex flex-col mb-4">
-                            <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">{{ $followings->count() }}
-                                Following</p>
-                            {{-- @foreach ($followings as $following)
+                    {{-- <div class="flex flex-col mb-4">
+                        <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">{{ $followings->count() }}
+                            Following</p> --}}
+                    {{-- @foreach ($followings as $following)
                                 <p class="py-2 px-3 text-grey-darkest" id="followings{{ $loop->index }}">
                                     {{ $following->name }}
                                 </p>
                             @endforeach --}}
-                        </div>
-
-                        <a href="{{ url()->previous() }}"
-                            class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-                            Back
-                        </a>
-                    </div>
                 </div>
+
+                <a href="{{ url()->previous() }}"
+                    class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+                    Back
+                </a>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </x-app-layout>

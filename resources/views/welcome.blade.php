@@ -389,11 +389,33 @@
             font-family: 'Nunito', sans-serif;
         }
 
-        body {
+        /* body {
             background-image: url('/image/top.png');
-            background-size: cover;
-            background-position: center center;
+            background-size: 100% auto;
+            background-position: center top;
             background-repeat: no-repeat;
+        } */
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            background-color: #e8e8e8;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            /* フッターの高さに合わせて値を調整 */
+            background-color: #f5f5f5;
+        }
+
+        @media (max-width: 640px) {
+            footer {
+                height: 80px;
+                /* スマートフォン向けにフッターの高さを変更 */
+            }
         }
     </style>
     </style>
@@ -420,12 +442,20 @@
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="flex items-center justify-center pt-8 sm:justify-start sm:pt-0">
                 <a href="/" class="flex items-center">
-                    <img src="{{ asset('/image/logo7.svg') }}"
-                        style="height:80px; margin-top:30px; margin-bottom:15px;">
-                    <h1 class="ml-2">GEOCARD</h1>
+                    <div style="margin-top:30px;">
+                        <img src="/image/top2.png" alt="画像の説明"
+                            style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
+                    </div>
+                    {{-- <img src="{{ asset('/image/logobig.png') }}"
+                        style="height:80px; margin-top:30px; margin-bottom:15px;"> --}}
+                    {{-- <h1 class="ml-2">GEOCARD</h1> --}}
                 </a>
             </div>
-
+            <div class="mt-8 text-center" style="margin-top:160px;">
+                <h1 style="font-size: 24px;">旅の出会いを気楽に長く</h1>
+                <h1 style="font-size: 24px;">「デジタル旅名刺」</h1>
+            </div>
+            {{-- 
             <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6">
@@ -476,7 +506,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                 <div class="text-center text-sm text-gray-500 sm:text-left">
@@ -485,12 +515,15 @@
                     </div>
                 </div>
 
-                <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                </div>
+
             </div>
         </div>
     </div>
+    <footer>
+        <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+            GEOCARD copyright
+        </div>
+    </footer>
     <!-- jQuery、Popper.js、Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">

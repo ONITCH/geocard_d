@@ -37,7 +37,7 @@
                             <tr>
                                 <th
                                     class="py-4 px-6 bg-grey-lightest uppercase text-lg text-grey-dark border-b border-grey-light">
-                                    今後どこに行く？
+                                    次の目的地は？
                                 </th>
                             </tr>
                         </thead>
@@ -57,12 +57,21 @@
                                                     <p class="text-left text-grey-dark" style="font-size: 14px;">
                                                         {{ $feed->user->name }}</p>
                                                 </a>
+                                                <div>
+                                                    <div style="font-size: 12px; margin-top: 12px; text-align:left;">
+                                                        {{-- <span class="mr-2"></span> --}}
+                                                        <span>{{ $feed->date1 }}</span>
+                                                        <span>〜</span>
+                                                        <span>{{ $feed->date2 }}</span>
+                                                    </div>
+                                                </div>
                                                 <a herf="{{ route('feed.show', $feed->id) }}">
                                                     <h3 class="text-left font-bold text-lg text-grey-dark"
-                                                        style="font-size: 14px; margin-top: 10px;">
+                                                        style="font-size: 14px;">
                                                         {{ $feed->feed }}
                                                     </h3>
                                                 </a>
+
                                             </div>
                                         </div>
 
@@ -70,7 +79,7 @@
                                         <div class="flex justify-end">
                                             @if ($feed->user_id === Auth::user()->id)
                                                 <form action="{{ route('feed.destroy', $feed->id) }}" method="POST"
-                                                    style="text-align: right; display: flex; align-items: center;">
+                                                    style="text-align: right;">
                                                     @method('delete')
                                                     @csrf
                                                     <button type="submit"
@@ -111,42 +120,35 @@
     <div class="form-bottom py-12">
         <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-gray-100 border-b border-gray-200">
+                <div class="p-4 bg-gray-100 border-b border-gray-200">
                     @include('common.errors')
                     <form class="mb-6" action="{{ route('feed.store') }}" method="POST">
                         @csrf
                         <div class="flex flex-col mb-4">
-                            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-                                for="feed">Feed</label>
-                            <div class="flex">
-                                <input class="flex-1 border py-2 px-3 text-grey-darkest" type="text" name="feed"
-                                    id="feed">
-                                <button type="submit"
-                                    class="ml-2 flex-shrink-0 py-3 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none w-20 md:w-auto">Create</button>
-                            </div>
-                        </div>
+                            <label class="mb-1 uppercase text-lg text-grey-darkest" for="feed"
+                                style="font-size:14px;">▶︎次の目的地を書き込む</label>
 
+                            <div class="flex" style="margin-bottom:10px;">
+                                <input class="flex-basis-0 border py-1 px-1 text-grey-darkest" type="date"
+                                    name="date1" id="date1" style="font-size:14px;">
+                                <p class="mx-2 flex items-center justify-center"style="font-size:14px;">から</p>
+                                <input
+                                    class="flex-basis-0
+                                    border py-1 px-1 text-grey-darkest"
+                                    type="date" name="date2" id="date2" style="font-size:14px;">
+                            </div>
+                            <div class="flex">
+                                <input class="flex-1 border py-1 px-3 text-grey-darkest" type="text" name="feed"
+                                    id="feed" style="font-size:14px;" placeholder="３０字まで">
+
+                                <button type="submit"
+                                    class="ml-2 flex-shrink-0 py-1 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none w-20 md:w-auto">Create</button>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">「台湾食べ歩き旅！」「東京出張」など</p>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
-
-
-
-<!-- 更新ボタン -->
-{{-- <form action="{{ route('feed.edit', $feed->id) }}" method="GET"
-                                                        class="text-left">
-                                                        @csrf
-                                                        <button type="submit"
-                                                            class="mr-2 ml-2 text-sm hover:bg-gray-200 hover:shadow-none text-white py-1 px-2 focus:outline-none focus:shadow-outline">
-                                                            <svg class="h-6 w-6 text-gray-500" fill="none"
-                                                                viewBox="0 0 24 24" stroke="black">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="1"
-                                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                                            </svg>
-                                                        </button>
-                                                    </form> --}}
-<!-- 削除ボタン -->

@@ -47,7 +47,7 @@
                     <tr>
                         <th
                             class="py-4 px-6 bg-grey-lightest uppercase text-lg text-grey-dark border-b border-grey-light">
-                            今後どこに行く？
+                            次の目的地は？
                         </th>
                     </tr>
                 </thead>

@@ -19,22 +19,26 @@
                     <form class="mb-6" action="{{ route('find.search') }}" method="POST">
                         @csrf
                         <div class="flex flex-col mb-4">
-                            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" style="color: black;"
-                                for="find">ユーザーを国で探す</label>
                             <div class="flex">
                                 <input class="flex-1 border py-2 px-3 text-grey-darkest" type="text" name="find"
-                                    id="find">
+                                    id="find" placeholder="国名">
                                 <button type="submit"
                                     class="ml-2 flex-shrink-0 py-3 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none w-20 md:w-auto">SEARCH</button>
                             </div>
+                            <label class="mb-2 uppercase text-lg text-grey-darkest"
+                                style="font-size:14px;color: black; margin-left:140px;" for="find">に行った人を探す</label>
                         </div>
                     </form>
 
-                    <div class="mb-4" style="color: black;">
-                        <h3>検索結果</h3>
-                        <ul style="color: black;">
+                    <div class="mb-4" style="color: black; ">
+                        <h3 style="margin-bottom:20px;">検索結果</h3>
+                        <ul style="color: black; ">
                             @foreach ($users as $user)
-                                <li>{{ $user->name }}</li>
+                                <li>
+                                    <a href="{{ route('user.show', ['user' => $user->id]) }}">
+                                        <p style="margin-top:10px; margin-bottom:10px;">▶︎ {{ $user->name }}</p>
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>

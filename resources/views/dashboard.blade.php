@@ -15,8 +15,8 @@
 
         @if (session('followed_user'))
             <div style="display: flex; justify-content: center;">
-                <div style="background-color: rgb(246, 215, 89); padding: 5px 10px; border-radius: 20px;">
-                    <p style="font-size: 12px; margin: 0;">{{ session('followed_user') }}さんのGEOCARDを入手しました！</p>
+                <div style="background-color: rgb(246, 215, 89); padding: 5px 10px; border-radius: 30px;">
+                    <p style="font-size: 12px; margin: 10px;">{{ session('followed_user') }}さんのGEOCARDを入手しました！</p>
                 </div>
             </div>
         @endif

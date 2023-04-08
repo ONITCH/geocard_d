@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->string('contact1')->nullable()->after('file_path');
+            $table->string('contact1_type')->nullable()->after('contact1');
+            $table->string('contact2')->nullable()->after('contact1_type');
+            $table->string('contact2_type')->nullable()->after('contact2');
         });
     }
 
@@ -26,7 +29,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('contact1');
+            $table->dropColumn('contact1_type');
+            $table->dropColumn('contact2');
+            $table->dropColumn('contact2_type');
         });
     }
 };

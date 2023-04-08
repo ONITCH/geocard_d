@@ -28,7 +28,35 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $validatedData = $request->validate([
+            'name' => ['nullable', 'string', 'max:255'],
+            'contact1' => ['nullable', 'string', 'max:255'],
+            'contact1_type' => ['nullable', 'in:twitter,instagram,other'],
+            'contact2' => ['nullable', 'string', 'max:255'],
+            'contact2_type' => ['nullable', 'in:twitter,instagram,other'],
+        ], [
+            'in' => 'The :attribute field must be one of the following types: twitter, instagram, other.',
+            'required_without' => 'The :attribute field is required when :values is not present.',
+        ]);
+
+        $user = Auth::user();
+        $user->name = $validatedData['name'] ?? $user->name;
+
+        // 既存の値を上書きする前に、送信された値が null でないかをチェックする
+        if (isset($validatedData['contact1'])) {
+            $user->contact1 = $validatedData['contact1'];
+        }
+        if (isset($validatedData['contact1_type'])) {
+            $user->contact1_type = $validatedData['contact1_type'];
+        }
+        if (isset($validatedData['contact2'])) {
+            $user->contact2 = $validatedData['contact2'];
+        }
+        if (isset($validatedData['contact2_type'])) {
+            $user->contact2_type = $validatedData['contact2_type'];
+        }
+
+        $user->save();
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
@@ -38,6 +66,8 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+
+
 
 
     public function uploadAvatar(Request $request)

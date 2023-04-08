@@ -36,6 +36,7 @@
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __('　FRIENDS画面で個人ページに表示されます') }}
+            {{ __('　twitter/instagramはユーザーネームを入力') }}
         </p>
     </header>
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
@@ -61,7 +62,7 @@
             </div>
             {{-- <x-input-label for="contact1" :value="__('Contact 1')" /> --}}
             <x-text-input style="background-color:white; color:black;" id="contact1" name="contact1" type="text"
-                class="mt-1 block w-full" :value="old('contact1', $user->contact1)" required autofocus autocomplete="contact1" />
+                class="mt-1 block w-full" :value="old('contact1', $user->contact1)" autofocus autocomplete="contact1" />
 
 
 
@@ -88,7 +89,7 @@
             </div>
             {{-- <x-input-label for="contact2" :value="__('Contact 2')" /> --}}
             <x-text-input style="background-color:white; color:black;" id="contact2" name="contact2" type="text"
-                class="mt-1 block w-full" :value="old('contact2', $user->contact2)" required autofocus autocomplete="contact2" />
+                class="mt-1 block w-full" :value="old('contact2', $user->contact2)" autocomplete="contact2" />
             <x-input-error class="mt-2" :messages="$errors->get('contact2')" />
         </div>
 

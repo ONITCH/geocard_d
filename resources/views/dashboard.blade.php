@@ -79,9 +79,17 @@
                                             <p class="text-left text-grey-dark" style="font-size: 14px;">
                                                 {{ $feed->user->name }}</p>
                                         </a>
+                                        <div>
+                                            <div style="font-size: 12px; margin-top: 12px; text-align:left;">
+                                                {{-- <span class="mr-2"></span> --}}
+                                                <span>{{ $feed->date1 }}</span>
+                                                <span>〜</span>
+                                                <span>{{ $feed->date2 }}</span>
+                                            </div>
+                                        </div>
                                         <a herf="{{ route('feed.show', $feed->id) }}">
                                             <h3 class="text-left font-bold text-lg text-grey-dark"
-                                                style="font-size: 14px; margin-top: 10px;">
+                                                style="font-size: 14px;">
                                                 {{ $feed->feed }}
                                             </h3>
                                         </a>

@@ -38,6 +38,69 @@
             {{ __('　FRIENDS画面で個人ページに表示されます') }}
         </p>
     </header>
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+        @csrf
+        @method('patch')
+        <div>
+            <p>連絡先①</p>
+            <div class="mt-2">
+                <label class="inline-flex items-center">
+                    <input type="radio" name="contact1_type" value="twitter" class="form-radio">
+                    <span class="ml-2">Twitter</span>
+                </label>
+
+                <label class="inline-flex items-center ml-6">
+                    <input type="radio" name="contact1_type" value="instagram" class="form-radio">
+                    <span class="ml-2">Instagram</span>
+                </label>
+
+                <label class="inline-flex items-center ml-6">
+                    <input type="radio" name="contact1_type" value="other" class="form-radio">
+                    <span class="ml-2">Other</span>
+                </label>
+            </div>
+            {{-- <x-input-label for="contact1" :value="__('Contact 1')" /> --}}
+            <x-text-input style="background-color:white; color:black;" id="contact1" name="contact1" type="text"
+                class="mt-1 block w-full" :value="old('contact1', $user->contact1)" required autofocus autocomplete="contact1" />
+
+
+
+            <x-input-error class="mt-2" :messages="$errors->get('contact1_type')" />
+        </div>
+
+        <div>
+            <p>連絡先②</p>
+            <div class="mt-2">
+                <label class="inline-flex items-center">
+                    <input type="radio" name="contact2_type" value="twitter" class="form-radio">
+                    <span class="ml-2">Twitter</span>
+                </label>
+
+                <label class="inline-flex items-center ml-6">
+                    <input type="radio" name="contact2_type" value="instagram" class="form-radio">
+                    <span class="ml-2">Instagram</span>
+                </label>
+
+                <label class="inline-flex items-center ml-6">
+                    <input type="radio" name="contact2_type" value="other" class="form-radio">
+                    <span class="ml-2">Other</span>
+                </label>
+            </div>
+            {{-- <x-input-label for="contact2" :value="__('Contact 2')" /> --}}
+            <x-text-input style="background-color:white; color:black;" id="contact2" name="contact2" type="text"
+                class="mt-1 block w-full" :value="old('contact2', $user->contact2)" required autofocus autocomplete="contact2" />
+            <x-input-error class="mt-2" :messages="$errors->get('contact2')" />
+        </div>
+
+        <div class="flex items-center gap-4">
+            <x-primary-button>{{ __('Save') }}</x-primary-button>
+
+            @if (session('status') === 'profile-updated')
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                    class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
+            @endif
+        </div>
+    </form>
 
 
     <header>

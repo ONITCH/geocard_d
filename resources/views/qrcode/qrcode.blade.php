@@ -8,18 +8,21 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <p style="text-align: center">どちらか一方の読み取りでOK！</p>
+            <div class="">
                 <div class="p-6 text-gray-900 dark:text-gray-100" style="background-color: white">
                     <div class="flex justify-center items-center h-full">
                         <img src="data:image/png;base64,{{ $src }}">
                         {{-- {!! QrCode::size(100)->generate('hello!!!') !!} --}}
                     </div>
                     <div class="visible-print text-center">
-                        <p>QRコード読み取り</p>
+                        {{-- <p>QRコード読み取り</p> --}}
                     </div>
                 </div>
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="text-center font-bold">{{ Auth::user()->name }}</div>
+                <div style="display: flex; justify-content: center;">
+                    <div style="background-color: rgb(246, 215, 89); padding: 5px 10px; border-radius: 30px;">
+                        <p style="font-size: 12px; margin: 10px;">{{ Auth::user()->name }}</p>
+                    </div>
                 </div>
             </div>
         </div>

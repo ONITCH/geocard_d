@@ -68,15 +68,16 @@
                         <label class="mb-2 font-bold text-lg text-grey-darkest" for="comments">② 旅の肩書き</label>
                         <p class="text-sm text-gray-500 ml-2 dark:text-gray-400" style="margin-bottom:10px;">
                             "一人旅マスター"　"東京の歩くグルメナビ"など<br>オリジナルの肩書きをつけましょう</p>
-                        <input class="border py-2 px-3 text-grey-darkest" type="text" name="comments" id="comments">
+                        <input class="border py-2 px-3 text-grey-darkest" type="text" name="comments" id="comments"
+                            placeholder="15字以内">
                     </div>
                 </div>
 
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col mb-4">
                         <label class="mb-2 font-bold text-lg text-grey-darkest" for="residence">③ 居住地</label>
-                        <input class="border py-2 px-3 text-grey-darkest" type="text" name="residence"
-                            id="residence">
+                        <input class="border py-2 px-3 text-grey-darkest" type="text" name="residence" id="residence"
+                            placeholder="15字以内">
                     </div>
                 </div>
 

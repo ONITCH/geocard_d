@@ -36,8 +36,11 @@ class FindController extends Controller
 
         $users = User::whereIn('id', $userIds)->get();
 
+
+
         return view('find.index', compact('users'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -48,6 +51,7 @@ class FindController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.

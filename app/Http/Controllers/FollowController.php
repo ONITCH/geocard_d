@@ -24,19 +24,6 @@ class FollowController extends Controller
         // ビューに変数を渡して表示させる
         return view('follow.show', compact('users'));
     }
-    // public function index(Request $request, $user)
-    // {
-    //     // ログインしているユーザーのIDを取得する
-    //     $userId = Auth::id();
-
-    //     // ログインしているユーザーのIDだけをもつユーザーを取得する
-    //     $users = User::where('id', $userId)->get();
-
-    //     // ビューに変数を渡して表示させる
-    //     return view('follow.show', compact('users'));
-    //     // $feeds = Feed::getAllOrderByUpdated_at();
-    //     // return view('follow.show', compact('feeds'));
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -55,43 +42,22 @@ class FollowController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request, User $user)
+    public function follow(Request $request, User $user)
     {
-        // フォロー済みの場合は何もしない
+        // ログインユーザーがすでにフォローしているかをチェック
         if ($request->user()->isFollowing($user)) {
             return redirect()->back()->with('error', 'You are already following ' . $user->name);
         }
 
-        // フォローしていない場合はフォローする
-        $request->user()->followings()->syncWithoutDetaching($user);
+        // フォローの保存
+        $request->user()->followings()->syncWithoutDetaching([$user->id]);
+        $user->followings()->syncWithoutDetaching([$request->user()->id]);
 
-        // フォロワーにも追加する
-        $user->followers()->syncWithoutDetaching($request->user()->id);
+        // フォローしたユーザーの名前をセッションに保存する
+        $request->session()->flash('followed_user', $user->name);
 
-        return redirect()->back()->with('success', 'You are now following ' . $user->name);
+        return redirect()->route('dashboard')->with('success', 'フォローしました');
     }
-    // public function store(Request $request, User $user)
-    // {
-    //     // フォロー済みの場合は何もしない
-    //     if ($request->user()->isFollowing($user)) {
-    //         return redirect()->back()->with('error', 'You are already following ' . $user->name);
-    //     }
-
-    //     $request->user()->followings()->attach($user);
-    //     $user->followers()->attach($request->user()->id);
-
-    //     return redirect()->back()->with('success', 'You are now following ' . $user->name);
-    // }
-    // if ($request->user()->canFollow($user)) {
-    //     $request->user()->followings()->attach($user);
-    //     $user->followers()->attach($user->id);
-    //     return redirect()->back();
-    // }
-    // Auth::user()->followings()->attach($user->id);
-    // //ここに足す　相手が自分をフォローする　以下追記文 QRコードをここに繋げる
-    // // $friend = User::find($user->id);
-    // // $friend->followers()->attach(Auth::$request->id());
-    // return redirect()->back()->with('success', 'You are now following ' . $user->name);
 
 
     /**

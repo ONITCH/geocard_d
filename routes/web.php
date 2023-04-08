@@ -65,7 +65,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('feed', FeedController::class);
 
-    Route::post('user/{user}/follow', [FollowController::class, 'store'])->name('follow');
+    Route::post('user/{user}/follow', [FollowController::class, 'follow'])->name('follow');
     Route::post('user/{user}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
 });
 

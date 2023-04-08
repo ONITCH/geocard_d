@@ -56,7 +56,9 @@ class CardController extends Controller
     {
         // バリデーション
         $request->validate([
-            'image' => 'required|file|image|mimes:png,jpeg'
+            'image' => 'required|file|image|mimes:png,jpeg',
+            'comments' => 'nullable|max:15',
+            'residence' => 'nullable|max:15'
         ]);
 
         $upload_image = $request->file('image');

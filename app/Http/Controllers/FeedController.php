@@ -58,7 +58,9 @@ class FeedController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'feed' => 'required | max:30',
+            'feed' => 'required|max:30',
+            'date1' => 'required|date',
+            'date2' => 'required|date',
         ]);
         if ($validator->fails()) {
             return redirect()
@@ -66,13 +68,12 @@ class FeedController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-        // 🔽 編集 フォームから送信されてきたデータとユーザIDをマージし，DBにinsertする
+        // フォームから送信されてきたデータにユーザIDをマージする
         $data = $request->merge(['user_id' => Auth::user()->id])->all();
+        // date1とdate2をリクエストデータに追加する
+        $data['date1'] = $request->input('date1');
+        $data['date2'] = $request->input('date2');
         $result = Feed::create($data);
-        // $feed = new Feed;
-        // $feed->feed = $request->content;
-        // $feed->user_id = $request->user()->id;
-        // $user_id->user_id = $request->user()->id;
         return redirect()->route('feed.index');
     }
 

@@ -445,12 +445,9 @@
             <div class="flex items-center justify-center pt-8 sm:justify-start sm:pt-0">
                 <a href="/" class="flex items-center">
                     <div style="margin-top:40px;">
-                        <img src="/image/top2.png" alt="card"
+                        <img src="{{ asset('/image/top2.png') }}" alt="card"
                             style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
                     </div>
-                    {{-- <img src="{{ asset('/image/logobig.png') }}"
-                        style="height:80px; margin-top:30px; margin-bottom:15px;"> --}}
-                    {{-- <h1 class="ml-2">GEOCARD</h1> --}}
                 </a>
             </div>
             <div class="mt-8 text-center" style="margin-top:10px;">
@@ -458,7 +455,7 @@
                 {{-- <h1 style="font-size: 24px;">「デジタル旅名刺」</h1> --}}
             </div>
             <div class="mt-8 text-center" style="margin-top:10px;">
-                <img src="/image/topinfo1.png" alt="info1"
+                <img src="{{ asset('/image/topinfo1.png') }}" alt="info1"
                     style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
                 <div
                     style="background-color:white; max-width: 80%;height:auto; display: block; margin: 0 auto; font-size:12px; padding:10px 10px 20px 10px;">
@@ -469,7 +466,7 @@
                     </div>
                     <div style="display:
                             flex; margin-top:20px;">
-                        <img src="/image/topimage1.png" alt="" style="width:70px; margin:10px;">
+                        <img src="{{ asset('/image/topimage1.png') }}" alt="" style="width:70px; margin:10px;">
                         <div style="display:flex col; text-align:left; margin-right: 10px;">
                             <p style="font-size: 12px; padding-top:12px;">QRコードで簡単に相手の<br>旅名刺をゲット！</p>
                             <p>長く続く気楽なコミュニケーションを始めよう</p>
@@ -484,7 +481,7 @@
                 {{-- <h1 style="font-size: 24px;">「デジタル旅名刺」</h1> --}}
             </div>
             <div class="mt-8 text-center" style="margin-top:10px;">
-                <img src="/image/topinfo2.png" alt="info1"
+                <img src="{{ asset('/image/topinfo2.png') }}" alt="info1"
                     style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
                 <div
                     style="background-color:white; max-width: 80%;height:auto; display: block; margin: 0 auto; font-size:12px; padding:10px 10px 20px 10px;">
@@ -499,7 +496,7 @@
                             <p style="font-size: 12px; padding-top:12px;">１分でカンタン名刺作成！</p>
                             <p>たくさんのGEOCARDをコレクションしたくなる！</p>
                         </div>
-                        <img src="/image/topimage2.png" alt="" style="width:70px; margin:10px;">
+                        <img src="{{ asset('/image/topimage2.png') }}" alt="" style="width:70px; margin:10px;">
                     </div>
                     {{-- <p style=" padding-top:30px;"></p> --}}
 
@@ -510,7 +507,7 @@
                 {{-- <h1 style="font-size: 24px;">「デジタル旅名刺」</h1> --}}
             </div>
             <div class="mt-8 text-center" style="margin-top:10px;">
-                <img src="/image/topinfo3.png" alt="info1"
+                <img src="{{ asset('/image/topinfo3.png') }}" alt="info1"
                     style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
                 <div
                     style="background-color:white; max-width: 80%;height:auto; display: block; margin: 0 auto; font-size:12px; padding:10px 10px 20px 10px;">
@@ -522,7 +519,8 @@
                     </div>
                     <div style="display:
                             flex; margin-top:20px;">
-                        <img src="/image/topimage3.png" alt="" style="width:70px; height:100px; margin:10px;">
+                        <img src="{{ asset('/image/topimage3.png') }}" alt=""
+                            style="width:70px; height:100px; margin:10px;">
                         <div style="display:flex col; text-align:left; margin-right: 10px;">
                             <p style="font-size: 12px; padding-top:12px;">
                                 みんなの次の旅先がわかるから<br>気軽に連絡するきっかけに。<br>コミュニケーションを<br>生み出します。</p>
@@ -538,7 +536,7 @@
                 {{-- <h1 style="font-size: 24px;">「デジタル旅名刺」</h1> --}}
             </div>
             <div class="mt-8 text-center" style="margin:10px 0 80px 0;">
-                <img src="/image/topinfo4.png" alt="info1"
+                <img src="{{ asset('/image/topinfo4.png') }}" alt="info1"
                     style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
                 <div
                     style="background-color:white; max-width: 80%;height:auto; display: block; margin: 0 auto; font-size:12px; padding:10px 10px 20px 10px;">
@@ -554,7 +552,8 @@
 
                             <p>さっそく始めよう！</p>
                         </div>
-                        <img src="/image/topimage4.png" alt="" style="width:70px; height:90px; margin:10px;">
+                        <img src="{{ asset('/image/topimage4.png') }}" alt=""
+                            style="width:70px; height:90px; margin:10px;">
                     </div>
 
                     <div style="margin-top:30px; margin-bottom:20px;">
@@ -583,7 +582,7 @@
 
     <footer style="height:60px; ">
         <div class="text-center">
-            <img src="image/logobig.png" alt="" style="height:30px; margin-top:15px;">
+            <img src="{{ asset('image/logobig.png') }}" alt="" style="height:30px; margin-top:15px;">
         </div>
     </footer>
     <!-- jQuery、Popper.js、Bootstrap JS -->

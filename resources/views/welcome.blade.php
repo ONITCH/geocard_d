@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" href="{{ asset('/image/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('/image/favicon_apple_180.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('/image/favicon192.png') }}">
     <title>GEOCARD</title>
 
     <!-- Fonts -->

@@ -21,7 +21,7 @@
         style="background-color:white;"class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
         <div>
             <a href="/">
-                <img src="{{ asset('/image/logo7.svg') }}" style="height:80px; margin-top:30px; margin-bottom:15px;">
+                <img src="{{ asset('/image/logo7.svg') }}" style="height:80px; margin-top:10px; margin-bottom:0px;">
             </a>
         </div>
         <div style="position: relative; margin-top: 65px;">

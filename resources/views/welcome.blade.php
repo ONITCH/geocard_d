@@ -389,11 +389,33 @@
             font-family: 'Nunito', sans-serif;
         }
 
-        body {
+        /* body {
             background-image: url('/image/top.png');
-            background-size: cover;
-            background-position: center center;
+            background-size: 100% auto;
+            background-position: center top;
             background-repeat: no-repeat;
+        } */
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            background-color: #e8e8e8;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            /* フッターの高さに合わせて値を調整 */
+            background-color: #f5f5f5;
+        }
+
+        @media (max-width: 640px) {
+            footer {
+                height: 80px;
+                /* スマートフォン向けにフッターの高さを変更 */
+            }
         }
     </style>
     </style>
@@ -404,14 +426,16 @@
         @if (Route::has('login'))
             <div class="fixed top-0 right-0 px-6 py-4 sm:hidden">
                 @auth
-                    <a href="{{ url('/dashboard') }}"
-                        class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500"
+                        style="background-color: rgb(255, 225, 0); padding:8px 10px 8px 10px; border-radius:30px;">Dashboard</a>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500"
+                        style="background-color: rgb(255, 225, 0); padding:8px 10px 8px 10px; border-radius:30px;">LOG
+                        IN</a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        <a href="{{ route('register') }}" class="ml-2 text-sm text-gray-700 dark:text-gray-500"
+                            style="background-color: rgb(255, 225, 0); padding:8px 10px 8px 10px; border-radius:30px;">新規登録</a>
                     @endif
                 @endauth
             </div>
@@ -420,77 +444,148 @@
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="flex items-center justify-center pt-8 sm:justify-start sm:pt-0">
                 <a href="/" class="flex items-center">
-                    <img src="{{ asset('/image/logo7.svg') }}"
-                        style="height:80px; margin-top:30px; margin-bottom:15px;">
-                    <h1 class="ml-2">GEOCARD</h1>
+                    <div style="margin-top:40px;">
+                        <img src="/image/top2.png" alt="card"
+                            style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
+                    </div>
+                    {{-- <img src="{{ asset('/image/logobig.png') }}"
+                        style="height:80px; margin-top:30px; margin-bottom:15px;"> --}}
+                    {{-- <h1 class="ml-2">GEOCARD</h1> --}}
                 </a>
             </div>
-
-            <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="p-6">
-                        <div class="flex items-center">
-
+            <div class="mt-8 text-center" style="margin-top:10px;">
+                <h1 style="font-size: 24px;">▼</h1>
+                {{-- <h1 style="font-size: 24px;">「デジタル旅名刺」</h1> --}}
+            </div>
+            <div class="mt-8 text-center" style="margin-top:10px;">
+                <img src="/image/topinfo1.png" alt="info1"
+                    style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
+                <div
+                    style="background-color:white; max-width: 80%;height:auto; display: block; margin: 0 auto; font-size:12px; padding:10px 10px 20px 10px;">
+                    <div
+                        style="background-color: rgb(235, 235, 235); padding:10px; margin:10px;font-size:15px; border-radius:15px;">
+                        <div>旅で出会った人と名刺交換。</div>
+                        <div>現実の出会いに、価値がある。</div>
+                    </div>
+                    <div style="display:
+                            flex; margin-top:20px;">
+                        <img src="/image/topimage1.png" alt="" style="width:70px; margin:10px;">
+                        <div style="display:flex col; text-align:left; margin-right: 10px;">
+                            <p style="font-size: 12px; padding-top:12px;">QRコードで簡単に相手の<br>旅名刺をゲット！</p>
+                            <p>長く続く気楽なコミュニケーションを始めよう</p>
                         </div>
+                    </div>
+                    {{-- <p style=" padding-top:10px;"></p> --}}
 
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                a
-                            </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center" style="margin-top:10px;">
+                <h1 style="font-size: 24px;">▼</h1>
+                {{-- <h1 style="font-size: 24px;">「デジタル旅名刺」</h1> --}}
+            </div>
+            <div class="mt-8 text-center" style="margin-top:10px;">
+                <img src="/image/topinfo2.png" alt="info1"
+                    style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
+                <div
+                    style="background-color:white; max-width: 80%;height:auto; display: block; margin: 0 auto; font-size:12px; padding:10px 10px 20px 10px;">
+                    <div
+                        style="background-color: rgb(235, 235, 235); padding:10px; margin:10px;font-size:15px; border-radius:15px;">
+                        <div>たくさんのテンプレートから</div>
+                        <div>あなた好みのオリジナル名刺を作成</div>
+                    </div>
+                    <div style="display:
+                            flex; margin-top:20px;">
+                        <div style="display:flex col; text-align:left; margin-left: 10px;">
+                            <p style="font-size: 12px; padding-top:12px;">１分でカンタン名刺作成！</p>
+                            <p>たくさんのGEOCARDをコレクションしたくなる！</p>
+                        </div>
+                        <img src="/image/topimage2.png" alt="" style="width:70px; margin:10px;">
+                    </div>
+                    {{-- <p style=" padding-top:30px;"></p> --}}
+
+                </div>
+            </div>
+            <div class="mt-8 text-center" style="margin-top:10px;">
+                <h1 style="font-size: 24px;">▼</h1>
+                {{-- <h1 style="font-size: 24px;">「デジタル旅名刺」</h1> --}}
+            </div>
+            <div class="mt-8 text-center" style="margin-top:10px;">
+                <img src="/image/topinfo3.png" alt="info1"
+                    style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
+                <div
+                    style="background-color:white; max-width: 80%;height:auto; display: block; margin: 0 auto; font-size:12px; padding:10px 10px 20px 10px;">
+                    <div
+                        style="background-color: rgb(235, 235, 235); padding:10px; margin:10px;font-size:15px; border-radius:15px;">
+                        <div>次の旅行の予定を書き込み。</div>
+                        <div>みんなの旅情報が <div></div>
+                            コミュニケーションのきっかけに</div>
+                    </div>
+                    <div style="display:
+                            flex; margin-top:20px;">
+                        <img src="/image/topimage3.png" alt="" style="width:70px; height:100px; margin:10px;">
+                        <div style="display:flex col; text-align:left; margin-right: 10px;">
+                            <p style="font-size: 12px; padding-top:12px;">
+                                みんなの次の旅先がわかるから<br>気軽に連絡するきっかけに。<br>コミュニケーションを<br>生み出します。</p>
+                            <p>再会のきっかけにも。</p>
                         </div>
                     </div>
 
-                    <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                        <div class="flex items-center">
 
-                        </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center" style="margin-top:10px;">
+                <h1 style="font-size: 24px;">▼</h1>
+                {{-- <h1 style="font-size: 24px;">「デジタル旅名刺」</h1> --}}
+            </div>
+            <div class="mt-8 text-center" style="margin:10px 0 80px 0;">
+                <img src="/image/topinfo4.png" alt="info1"
+                    style=" margin-top:50px; max-width: 80%; height:auto; display: block; margin: 0 auto;">
+                <div
+                    style="background-color:white; max-width: 80%;height:auto; display: block; margin: 0 auto; font-size:12px; padding:10px 10px 20px 10px;">
+                    <div
+                        style="background-color: rgb(235, 235, 235); padding:10px; margin:10px;font-size:15px; border-radius:15px;">
+                        <div>SNSより気楽。</div>
+                        <div>だから繋がっていられる</div>
+                    </div>
+                    <div style="display:
+                            flex; margin-top:20px;">
+                        <div style="display:flex col; text-align:left; margin-left: 10px;">
+                            <p style="font-size: 12px; padding-top:12px;">あえて機能はシンプル。<br>知り合いだから気張る必要もなし。<br>だから続く。</p>
 
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                b
-                            </div>
+                            <p>さっそく始めよう！</p>
                         </div>
+                        <img src="/image/topimage4.png" alt="" style="width:70px; height:90px; margin:10px;">
                     </div>
 
-                    <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                        <div class="flex items-center">
+                    <div style="margin-top:30px; margin-bottom:20px;">
+                        @auth
+                            {{-- <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500"
+                                style="background-color: rgb(255, 225, 0); padding:8px 10px 8px 10px; border-radius:30px;">Dashboard</a> --}}
+                        @else
+                            {{-- <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500"
+                                style="background-color: rgb(255, 225, 0); padding:8px 10px 8px 10px; border-radius:30px;">LOG
+                                IN</a> --}}
 
-                        </div>
-
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                c
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                        <div class="flex items-center">
-
-                        </div>
-
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                d
-                            </div>
-                        </div>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-2 text-sm text-gray-700 dark:text-gray-500"
+                                    style="background-color: rgb(255, 225, 0); padding:8px 14px 8px 14px; border-radius:30px;">GEOCARDを作成する</a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>
-
-            <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                <div class="text-center text-sm text-gray-500 sm:text-left">
-                    <div class="flex items-center">
-
-                    </div>
-                </div>
-
-                <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                </div>
+            <div class="mt-8 text-center" style="margin-top:10px;">
+                <h1 style="font-size: 24px;">▼</h1>
+                {{-- <h1 style="font-size: 24px;">「デジタル旅名刺」</h1> --}}
             </div>
         </div>
     </div>
+
+    <footer style="height:60px; ">
+        <div class="text-center">
+            <img src="image/logobig.png" alt="" style="height:30px; margin-top:15px;">
+        </div>
+    </footer>
     <!-- jQuery、Popper.js、Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">

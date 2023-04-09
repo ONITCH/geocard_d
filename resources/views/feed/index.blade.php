@@ -126,7 +126,7 @@
                         @csrf
                         <div class="flex flex-col mb-4">
                             <label class="mb-1 uppercase text-lg text-grey-darkest" for="feed"
-                                style="font-size:14px;">▶︎次の目的地を書き込む</label>
+                                style="font-size:14px;">▶︎ 次の目的地を書き込む</label>
 
                             <div class="flex" style="margin-bottom:10px;">
                                 <input class="border py-1 px-1 text-grey-darkest" type="date" name="date1"

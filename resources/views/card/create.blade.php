@@ -90,12 +90,17 @@
 
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    <button styletype="submit"
+                    <button type="submit"
                         class="w-full py-3 mt-6 font-medium tracking-widest text-white bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
                         CREATE
                     </button>
                     </form>
+                    {{-- <a href="{{ url()->previous() }}" style="margin-top: 30px"
+                        class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+                        Back
+                    </a> --}}
                 </div>
+
             </div>
         </div>
 

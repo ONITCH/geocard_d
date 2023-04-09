@@ -25,6 +25,12 @@
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>
+            <div class="p-6 bg-white border-b border-gray-200">
+                <a href="{{ url()->previous() }} "style="margin-bottom:70px;"
+                    class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+                    Back
+                </a>
+            </div>
         </div>
     </div>
 </x-app-layout>

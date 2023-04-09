@@ -24,6 +24,12 @@
                         <p style="font-size: 12px; margin: 10px;">{{ Auth::user()->name }}</p>
                     </div>
                 </div>
+                <div class="p-6 bg-white">
+                    <a href="{{ url()->previous() }}" style="margin-top: 30px"
+                        class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+                        Back
+                    </a>
+                </div>
             </div>
         </div>
 </x-app-layout>

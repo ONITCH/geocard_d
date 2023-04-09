@@ -19,7 +19,7 @@
                     </thead>
                     <tbody>
                         <tr class="hover:bg-grey-lighter">
-                            <td class="py-4 px-6 border-b border-grey-light">
+                            <td class="py-4 px-6">
                                 <div class="card">
 
                                     <form method="POST" action="{{ route('card.save-countries') }}">
@@ -115,7 +115,7 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                    <a href="{{ url()->previous() }}"
+                                    <a href="{{ url()->previous() }}" style="margin-top: 50px"
                                         class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
                                         Back
                                     </a>

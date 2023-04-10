@@ -5,8 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ asset('/image/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('/image/favicon_apple_180.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('/image/favicon192.png') }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'GEOCARD') }}</title> --}}
+    <title>GEOCARD</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
